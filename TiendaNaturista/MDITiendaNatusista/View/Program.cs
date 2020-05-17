@@ -6,17 +6,19 @@ using System.Windows.Forms;
 
 namespace MDITiendaNatusista
 {
-	static class Program
+	 class Program
 	{
-		/// <summary>
-		/// Punto de entrada principal para la aplicación.
-		/// </summary>
-		[STAThread]
+		
 		static void Main()
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Login());
+			Login l = new Login();
+			l.Show();
+			Application.Run();
+
+
 		}
+		
 	}
 }

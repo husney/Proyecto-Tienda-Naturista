@@ -14,7 +14,21 @@ namespace MDITiendaNatusista
 	{
 		public PrincipalView()
 		{
+			
 			InitializeComponent();
+			
+
+
+		}
+
+		private void PrincipalView_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
+		}
+
+		private void PrincipalView_Load(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }
