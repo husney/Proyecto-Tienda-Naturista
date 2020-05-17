@@ -43,7 +43,8 @@ namespace MDITiendaNatusista
 
 		private void productosToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			View.Productos p = new View.Productos();
+			p.Show();
 		}
 
 		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)

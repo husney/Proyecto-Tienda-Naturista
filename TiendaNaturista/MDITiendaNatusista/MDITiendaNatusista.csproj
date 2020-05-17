@@ -48,6 +48,11 @@
   <ItemGroup>
     <Compile Include="Bussines\Controlador.cs" />
     <Compile Include="DataAccess\Conexion.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\DetalleFactura.cs" />
+    <Compile Include="Entities\Factura.cs" />
+    <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\Vendedor.cs" />
     <Compile Include="View\PrincipalView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +64,12 @@
     </Compile>
     <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +94,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
