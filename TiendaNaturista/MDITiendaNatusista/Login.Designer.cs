@@ -82,10 +82,12 @@
 			// 
 			// txtContraseña
 			// 
-			this.txtContraseña.Font = new System.Drawing.Font("Roboto Light", 14.25F);
+			this.txtContraseña.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+			this.txtContraseña.Font = new System.Drawing.Font("Barlow Condensed Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtContraseña.Location = new System.Drawing.Point(289, 261);
 			this.txtContraseña.Multiline = true;
 			this.txtContraseña.Name = "txtContraseña";
+			this.txtContraseña.PasswordChar = '*';
 			this.txtContraseña.Size = new System.Drawing.Size(228, 31);
 			this.txtContraseña.TabIndex = 4;
 			// 
@@ -98,6 +100,7 @@
 			this.btnIngresar.TabIndex = 5;
 			this.btnIngresar.Text = "Ingresar";
 			this.btnIngresar.UseVisualStyleBackColor = true;
+			this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
 			// 
 			// btnRegistrar
 			// 
@@ -108,6 +111,7 @@
 			this.btnRegistrar.TabIndex = 6;
 			this.btnRegistrar.Text = "Registrar";
 			this.btnRegistrar.UseVisualStyleBackColor = true;
+			this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
 			// 
 			// Login
 			// 
@@ -123,6 +127,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "Login";
 			this.Text = "Login";
+			this.Load += new System.EventHandler(this.Login_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

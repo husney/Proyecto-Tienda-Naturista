@@ -33,9 +33,9 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnRegistro = new System.Windows.Forms.Button();
 			this.btnNuevo = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.txtClaveSistema = new System.Windows.Forms.TextBox();
+			this.txtUser = new System.Windows.Forms.TextBox();
+			this.txtPass = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -77,6 +77,7 @@
 			this.btnRegistro.TabIndex = 3;
 			this.btnRegistro.Text = "Registrar";
 			this.btnRegistro.UseVisualStyleBackColor = true;
+			this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
 			// 
 			// btnNuevo
 			// 
@@ -88,38 +89,43 @@
 			this.btnNuevo.Text = "Nuevo";
 			this.btnNuevo.UseVisualStyleBackColor = true;
 			// 
-			// textBox1
+			// txtClaveSistema
 			// 
-			this.textBox1.Location = new System.Drawing.Point(382, 44);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(218, 32);
-			this.textBox1.TabIndex = 5;
+			this.txtClaveSistema.Font = new System.Drawing.Font("Roboto Light", 14.25F);
+			this.txtClaveSistema.Location = new System.Drawing.Point(382, 44);
+			this.txtClaveSistema.Multiline = true;
+			this.txtClaveSistema.Name = "txtClaveSistema";
+			this.txtClaveSistema.PasswordChar = '*';
+			this.txtClaveSistema.Size = new System.Drawing.Size(218, 32);
+			this.txtClaveSistema.TabIndex = 5;
 			// 
-			// textBox2
+			// txtUser
 			// 
-			this.textBox2.Location = new System.Drawing.Point(382, 125);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(218, 32);
-			this.textBox2.TabIndex = 6;
+			this.txtUser.Font = new System.Drawing.Font("Roboto Light", 14.25F);
+			this.txtUser.Location = new System.Drawing.Point(382, 125);
+			this.txtUser.Multiline = true;
+			this.txtUser.Name = "txtUser";
+			this.txtUser.Size = new System.Drawing.Size(218, 32);
+			this.txtUser.TabIndex = 6;
 			// 
-			// textBox3
+			// txtPass
 			// 
-			this.textBox3.Location = new System.Drawing.Point(382, 203);
-			this.textBox3.Multiline = true;
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(218, 32);
-			this.textBox3.TabIndex = 7;
+			this.txtPass.Font = new System.Drawing.Font("Barlow Condensed Black", 20.25F, System.Drawing.FontStyle.Bold);
+			this.txtPass.Location = new System.Drawing.Point(382, 203);
+			this.txtPass.Multiline = true;
+			this.txtPass.Name = "txtPass";
+			this.txtPass.PasswordChar = '*';
+			this.txtPass.Size = new System.Drawing.Size(218, 32);
+			this.txtPass.TabIndex = 7;
 			// 
 			// Registro
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(780, 352);
-			this.Controls.Add(this.textBox3);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.txtPass);
+			this.Controls.Add(this.txtUser);
+			this.Controls.Add(this.txtClaveSistema);
 			this.Controls.Add(this.btnNuevo);
 			this.Controls.Add(this.btnRegistro);
 			this.Controls.Add(this.label3);
@@ -139,8 +145,8 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button btnRegistro;
 		private System.Windows.Forms.Button btnNuevo;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox txtClaveSistema;
+		private System.Windows.Forms.TextBox txtUser;
+		private System.Windows.Forms.TextBox txtPass;
 	}
 }
