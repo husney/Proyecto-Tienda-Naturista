@@ -30,5 +30,30 @@ namespace MDITiendaNatusista
 		{
 			
 		}
+
+		private void menuPrincipal_Opening(object sender, CancelEventArgs e)
+		{
+
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

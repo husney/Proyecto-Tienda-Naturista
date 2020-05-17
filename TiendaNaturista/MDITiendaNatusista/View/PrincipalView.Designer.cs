@@ -28,15 +28,60 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.menuPrincipal = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.facturarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuPrincipal
+			// menuPrincipalToolStripMenuItem
 			// 
-			this.menuPrincipal.Name = "menuPrincipal";
-			this.menuPrincipal.Size = new System.Drawing.Size(61, 4);
-			this.menuPrincipal.Text = "Menu Principal";
+			this.menuPrincipalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productosToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.facturarToolStripMenuItem,
+            this.inventarioToolStripMenuItem});
+			this.menuPrincipalToolStripMenuItem.Name = "menuPrincipalToolStripMenuItem";
+			this.menuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+			this.menuPrincipalToolStripMenuItem.Text = "Menu Principal";
+			// 
+			// productosToolStripMenuItem
+			// 
+			this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+			this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.productosToolStripMenuItem.Text = "Productos";
+			this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
+			// 
+			// clientesToolStripMenuItem
+			// 
+			this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+			this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.clientesToolStripMenuItem.Text = "Clientes";
+			// 
+			// facturarToolStripMenuItem
+			// 
+			this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
+			this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.facturarToolStripMenuItem.Text = "Facturar";
+			// 
+			// inventarioToolStripMenuItem
+			// 
+			this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
+			this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.inventarioToolStripMenuItem.Text = "Inventario";
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuPrincipalToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(778, 24);
+			this.menuStrip1.TabIndex = 2;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
 			// PrincipalView
 			// 
@@ -45,19 +90,29 @@
 			this.AutoSize = true;
 			this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
 			this.ClientSize = new System.Drawing.Size(778, 551);
+			this.Controls.Add(this.menuStrip1);
 			this.IsMdiContainer = true;
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "PrincipalView";
 			this.Text = "Healthy Shop";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PrincipalView_FormClosed);
 			this.Load += new System.EventHandler(this.PrincipalView_Load);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.ContextMenuStrip menuPrincipal;
+		private System.Windows.Forms.ToolStripMenuItem menuPrincipalToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem facturarToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
+		private System.Windows.Forms.MenuStrip menuStrip1;
 	}
 }
 

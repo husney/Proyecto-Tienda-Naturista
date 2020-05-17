@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bussines\Controlador.cs" />
     <Compile Include="DataAccess\Conexion.cs" />
     <Compile Include="View\PrincipalView.cs">
       <SubType>Form</SubType>

@@ -23,9 +23,46 @@ namespace MDITiendaNatusista
 
 		public void regsitrar(String contraseñaSistema, String usuario, String password)
 		{
+			if(this.txtClaveSistema.Text == "" && this.txtUser.Text == "" && this.txtPass.Text =="")
+			{
+				MessageBox.Show("Por favor ingrese los valores correspondientes");
+			}
+			else if(this.txtClaveSistema.Text == "")
+			{
+				MessageBox.Show("Porfavor ingrese la clave del sistema");
+			}
+			else if(this.txtUser.Text == "")
+			{
+				MessageBox.Show("Por favor ingrese el usuario");
+			}else if(this.txtPass.Text == "")
+			{
+				MessageBox.Show("Porfavor ingrese la contraseña");
+			}
+			else { 
+
 			if(contraseñaSistema == sysPassword)
 			{
-				DataAccess.Conexion con = new DataAccess.Conexion();
+				Bussines.Controlador con = new Bussines.Controlador();
+
+					if (con.registrarVendedor(usuario, password))
+					{
+						MessageBox.Show("Registrado correctamente");
+						limpiar();
+					}
+					else
+					{
+						MessageBox.Show("Error en el registro");
+					}
+
+
+				}
+				else
+				{
+					MessageBox.Show("Clave del sistema incorrecta");
+				}
+
+
+				/*DataAccess.Conexion con = new DataAccess.Conexion();
 				SqlConnection c = con.getConexion();
 
 				//venUsuario venContraseña
@@ -53,9 +90,9 @@ namespace MDITiendaNatusista
 			}
 			else
 			{
-				MessageBox.Show("!Clave del Sistema incorrecta!");
+				MessageBox.Show("!Clave del Sistema incorrecta!");*/
 			}
-		}
+			}
 
 		private void btnRegistro_Click(object sender, EventArgs e)
 		{
@@ -67,6 +104,11 @@ namespace MDITiendaNatusista
 			this.txtClaveSistema.Clear();
 			this.txtUser.Clear();
 			this.txtPass.Clear();
+		}
+
+		private void btnNuevo_Click(object sender, EventArgs e)
+		{
+			limpiar();
 		}
 	}
 }

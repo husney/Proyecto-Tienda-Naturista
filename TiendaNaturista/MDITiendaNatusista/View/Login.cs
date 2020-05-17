@@ -11,11 +11,10 @@ using System.Data.SqlClient;
 
 namespace MDITiendaNatusista
 {
-	public delegate void logeo (Login l);
+	
 	public partial class Login : Form
 	{
-		int entra = 0;
-
+	
 		public Login()
 		{
 			InitializeComponent();
@@ -53,42 +52,21 @@ namespace MDITiendaNatusista
 			}else if(this.txtContraseña.Text == "")
 			{
 				MessageBox.Show("Por favor ingrese la contraseña");
-			}else { 
-				DataAccess.Conexion con = new DataAccess.Conexion();
-				SqlConnection c = con.getConexion();
+			}else {
 
-				//venUsuario venContraseña
+				Bussines.Controlador control = new Bussines.Controlador();
 
-				String sql = "SELECT * FROM dbo.vendedores WHERE venUsuario = @user AND venContraseña = @pass";
-
-				try
+				if(control.conectar(this.txtUsuario.Text, this.txtContraseña.Text) == true)
 				{
-					SqlCommand comando = new SqlCommand(sql, c);
-					comando.Parameters.AddWithValue("@user", txtUsuario.Text);
-					comando.Parameters.AddWithValue("@pass", txtContraseña.Text);
-					SqlDataReader lector = comando.ExecuteReader();
-					if (lector.Read())
-					{
-						Console.WriteLine(("Usuario Encontrado"));
-						PrincipalView pv = new PrincipalView();
-						pv.Visible = true;
-						this.Hide();
-
-						
-					}
-					else
-					{
-						MessageBox.Show("Usuario o Contraseña incorrectos");
-					}
-				}catch(Exception ex)
+					PrincipalView pv = new PrincipalView();
+					pv.Visible = true;
+					this.Hide();
+				}
+				else
 				{
+					MessageBox.Show("Usuario o Contraseña incorrectos");
+				}
 				
-				}
-				finally
-				{
-					c.Close();
-					
-				}
 			}
 
 
@@ -98,12 +76,11 @@ namespace MDITiendaNatusista
 		{
 			
 		}
-		public int entrar()
-		{
-			return entra;
-		}
 
-		
+		private void Login_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
+		}
 	}
 }
 
