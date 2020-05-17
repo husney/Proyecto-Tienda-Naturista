@@ -1,0 +1,12 @@
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\bin\Debug\MDITiendaNatusista.exe.config
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\bin\Debug\MDITiendaNatusista.exe
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\bin\Debug\MDITiendaNatusista.pdb
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.csprojAssemblyReference.cache
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.PrincipalView.resources
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.Properties.Resources.resources
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.csproj.GenerateResource.cache
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.csproj.CoreCompileInputs.cache
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.exe
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.pdb
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.Login.resources
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.Registro.resources
