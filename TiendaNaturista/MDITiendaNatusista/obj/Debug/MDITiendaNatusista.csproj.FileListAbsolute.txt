@@ -11,3 +11,5 @@ B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Stu
 B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.Login.resources
 B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.Registro.resources
 B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.View.Productos.resources
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.View.Inventario.resources
+B:\SENA\Desarrollando\Desarrollo de aplicaciones Windows en C# usando Visual Studio .Net\Tienda Naturista\TiendaNaturista\MDITiendaNatusista\obj\Debug\MDITiendaNatusista.View.Cliente.resources

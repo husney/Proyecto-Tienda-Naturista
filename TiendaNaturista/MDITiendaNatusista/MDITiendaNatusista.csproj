@@ -53,6 +53,24 @@
     <Compile Include="Entities\Factura.cs" />
     <Compile Include="Entities\Producto.cs" />
     <Compile Include="Entities\Vendedor.cs" />
+    <Compile Include="View\Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cliente.Designer.cs">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Facturar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Facturar.Designer.cs">
+      <DependentUpon>Facturar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PrincipalView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +97,12 @@
     <Compile Include="View\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Cliente.resx">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\PrincipalView.resx">
       <DependentUpon>PrincipalView.cs</DependentUpon>
     </EmbeddedResource>

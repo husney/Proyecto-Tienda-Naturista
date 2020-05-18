@@ -255,7 +255,6 @@
 			this.gridTabla.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.gridTabla.Location = new System.Drawing.Point(5, 132);
 			this.gridTabla.Name = "gridTabla";
-			this.gridTabla.ReadOnly = true;
 			this.gridTabla.Size = new System.Drawing.Size(1154, 402);
 			this.gridTabla.TabIndex = 3;
 			this.gridTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTabla_CellContentClick);

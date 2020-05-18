@@ -56,5 +56,22 @@ namespace MDITiendaNatusista
 		{
 
 		}
+
+		private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			View.Inventario invent = new View.Inventario();
+			invent.Show();
+		}
+
+		private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			View.Cliente cli = new View.Cliente();
+			cli.Show();
+		}
 	}
 }
