@@ -110,46 +110,47 @@ namespace MDITiendaNatusista.Bussines
 		}
 
 
-		//Productos
-		public  ComboBox llenarProductos(ComboBox datos)
+		public List<Entities.Producto> llenarCbx()
 		{
+			List<Entities.Producto> productos = new List<Entities.Producto>();
 			SqlConnection c = con.getConexion();
 
-			
-			String sql = " SELECT proCodigo, proDescripcion, proValor, proCantidad FROM dbo.productos";
+			productos.Add(new Entities.Producto("", "Todos", 0, 0));
 
-			Entities.Producto pro1 = new Entities.Producto();
-			pro1.Descripcion = "Todos";
-			datos.Items.Add(pro1);
+			try { 
+			String sql = "SELECT proCodigo, proDescripcion, proValor, proCantidad FROM dbo.productos";
 
-			
-			try
+			SqlCommand comando = new SqlCommand(sql, c);
+			SqlDataReader lector = comando.ExecuteReader();
+
+
+			while (lector.Read())
 			{
-				SqlCommand comando = new SqlCommand(sql, c);
-				SqlDataReader lector = comando.ExecuteReader();
-				while (lector.Read())
-				{
-					Entities.Producto prod = new Entities.Producto();
-					prod.Codigo = lector.GetValue(0).ToString();
-					prod.Descripcion = lector.GetValue(1).ToString();
-					prod.Valor = Convert.ToDouble(lector.GetValue(2));
-					prod.Cantidad = Convert.ToInt32(lector.GetValue(3));
-
-					datos.Items.Add(prod);
-					
-				}
-				return datos;
-
+				String cod = lector.GetValue(0).ToString();
+				String desc = lector.GetValue(1).ToString();
+				double val = Convert.ToDouble(lector.GetValue(2));
+				int can = Convert.ToInt32(lector.GetValue(3));
+				productos.Add(new Entities.Producto(cod, desc, val, can));
+			}
+			return productos;
 			}catch(Exception ex)
 			{
-				return datos;
+				return null;
 			}
 			finally
 			{
 				c.Close();
+				
 			}
 
 		}
+		
+
+	
+
+		
+
+
 
 		//Productos
 		public DataTable llenarProdutosGrid()
@@ -171,7 +172,8 @@ namespace MDITiendaNatusista.Bussines
 
 			}catch(Exception ex)
 			{
-				return null;
+				DataTable d = new DataTable();
+				return d;
 			}
 			finally
 			{
@@ -207,7 +209,7 @@ namespace MDITiendaNatusista.Bussines
 		}
 
 		//Buscar Update Productos
-		public Entities.Producto llenarUpdateProd(String codigo)
+		public Entities.Producto llenarObjProduct(String codigo)
 		{
 			SqlConnection c = con.getConexion();
 
@@ -239,6 +241,56 @@ namespace MDITiendaNatusista.Bussines
 			}
 			return null;
 
+		}
+
+
+		public bool actualizarProd(Entities.Producto prod)
+		{
+
+			SqlConnection c = con.getConexion();
+
+			String sql = "UPDATE dbo.productos SET proDescripcion = @descripcion, proValor = @valor, proCantidad = @cantidad WHERE proCodigo = @codigo";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql , c);
+				comando.Parameters.AddWithValue("@descripcion", prod.Descripcion);
+				comando.Parameters.AddWithValue("@valor", prod.Valor);
+				comando.Parameters.AddWithValue("@cantidad", prod.Cantidad);
+				comando.Parameters.AddWithValue("@codigo", prod.Codigo);
+				comando.ExecuteNonQuery();
+				return true;
+			}catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
+
+		public bool eliminarProd(Entities.Producto prod)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "DELETE FROM dbo.productos WHERE proCodigo = @codigo";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@codigo", prod.Codigo);
+				comando.ExecuteNonQuery();
+				return true;
+			}catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
+			}
+			
 		}
 
 

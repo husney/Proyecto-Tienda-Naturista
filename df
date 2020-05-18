@@ -1,0 +1,41 @@
+[33mcommit d0113a797165ca3d26f8f5e4982784c326415870[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Mon May 18 10:30:23 2020 -0500
+
+    Se agregan los listadores de productos
+
+[33mcommit b3d6a19f37c47bb95e85ae5ba920e6487c41375c[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 21:59:03 2020 -0500
+
+    Se agrega la seccion de Produtos y el respectivo Registro
+
+[33mcommit d8034d54d06da9444557de00a17216c566be6258[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 18:16:58 2020 -0500
+
+    Se agregan las entidades
+
+[33mcommit dd60c32557cd0595e816957d30662bb866414969[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 16:29:49 2020 -0500
+
+    Se agrega la capa controladora del negocio
+
+[33mcommit c71789f87d8e4fdcfaf36fddfaa1a399bf1e8545[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 15:10:19 2020 -0500
+
+    Se agrega al inicio del programa 1- login 2- mdi
+
+[33mcommit 9f3f2d28d31393f67a13279ba02e9b3eea5023dd[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 12:30:48 2020 -0500
+
+    Se agrega la conexion a la base de datos para el Login y Registro
+
+[33mcommit 5d0d8ee14698ce465d2298b587feac0af6160bf0[m
+Author: Husney <usneibayon@gmail.com>
+Date:   Sun May 17 09:08:30 2020 -0500
+
+    Se agrega la ventana principal MDI, ventana login y registro

@@ -41,32 +41,44 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.button1 = new System.Windows.Forms.Button();
 			this.gridTabla = new System.Windows.Forms.DataGridView();
 			this.cbxProductos = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.cbxUpdateProd = new System.Windows.Forms.ComboBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.txtUpdCantidad = new System.Windows.Forms.TextBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.txtUpdValor = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.txtUpdDescripcion = new System.Windows.Forms.TextBox();
+			this.txtUpdCodigo = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.gridModificarProd = new System.Windows.Forms.DataGridView();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.gridModificarProd = new System.Windows.Forms.DataGridView();
-			this.label7 = new System.Windows.Forms.Label();
-			this.txtUpdCodigo = new System.Windows.Forms.TextBox();
-			this.txtUpdDescripcion = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.txtUpdValor = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.txtUpdCantidad = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.cbxUpdateProduct = new System.Windows.Forms.ComboBox();
+			this.btnBuscarUpdate = new System.Windows.Forms.Button();
+			this.btnActualizar = new System.Windows.Forms.Button();
+			this.gridEliminar = new System.Windows.Forms.DataGridView();
+			this.btnEliminar = new System.Windows.Forms.Button();
+			this.cbxEliminar = new System.Windows.Forms.ComboBox();
+			this.btnBuscarEliminar = new System.Windows.Forms.Button();
+			this.txtDeleteCod = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.txtDeleteNom = new System.Windows.Forms.TextBox();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridTabla)).BeginInit();
 			this.tabPage3.SuspendLayout();
-			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridModificarProd)).BeginInit();
+			this.tabPage4.SuspendLayout();
+			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gridEliminar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -218,6 +230,17 @@
 			this.tabPage2.Text = "Consultar Productos";
 			this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
 			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(865, 51);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(140, 46);
+			this.button1.TabIndex = 9;
+			this.button1.Text = "Buscar";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// gridTabla
 			// 
 			this.gridTabla.AllowUserToAddRows = false;
@@ -263,7 +286,9 @@
 			// tabPage3
 			// 
 			this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(177)))), ((int)(((byte)(158)))));
-			this.tabPage3.Controls.Add(this.cbxUpdateProduct);
+			this.tabPage3.Controls.Add(this.btnActualizar);
+			this.tabPage3.Controls.Add(this.btnBuscarUpdate);
+			this.tabPage3.Controls.Add(this.cbxUpdateProd);
 			this.tabPage3.Controls.Add(this.label11);
 			this.tabPage3.Controls.Add(this.txtUpdCantidad);
 			this.tabPage3.Controls.Add(this.label10);
@@ -281,9 +306,134 @@
 			this.tabPage3.Text = "Modificar Productos";
 			this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
 			// 
+			// cbxUpdateProd
+			// 
+			this.cbxUpdateProd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxUpdateProd.FormattingEnabled = true;
+			this.cbxUpdateProd.Location = new System.Drawing.Point(38, 235);
+			this.cbxUpdateProd.Name = "cbxUpdateProd";
+			this.cbxUpdateProd.Size = new System.Drawing.Size(349, 33);
+			this.cbxUpdateProd.TabIndex = 15;
+			this.cbxUpdateProd.SelectedIndexChanged += new System.EventHandler(this.cbxUpdateProd_SelectedIndexChanged);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label11.Location = new System.Drawing.Point(605, 248);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(523, 24);
+			this.label11.TabIndex = 14;
+			this.label11.Text = "Seleccione el código del producto que desea actualizar";
+			// 
+			// txtUpdCantidad
+			// 
+			this.txtUpdCantidad.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtUpdCantidad.Location = new System.Drawing.Point(865, 86);
+			this.txtUpdCantidad.Multiline = true;
+			this.txtUpdCantidad.Name = "txtUpdCantidad";
+			this.txtUpdCantidad.Size = new System.Drawing.Size(274, 47);
+			this.txtUpdCantidad.TabIndex = 13;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(656, 76);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(193, 57);
+			this.label10.TabIndex = 12;
+			this.label10.Text = "Cantidad";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.Location = new System.Drawing.Point(130, 86);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(123, 57);
+			this.label9.TabIndex = 11;
+			this.label9.Text = "Valor";
+			// 
+			// txtUpdValor
+			// 
+			this.txtUpdValor.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtUpdValor.Location = new System.Drawing.Point(259, 86);
+			this.txtUpdValor.Multiline = true;
+			this.txtUpdValor.Name = "txtUpdValor";
+			this.txtUpdValor.Size = new System.Drawing.Size(274, 47);
+			this.txtUpdValor.TabIndex = 10;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Location = new System.Drawing.Point(599, 10);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(250, 57);
+			this.label8.TabIndex = 9;
+			this.label8.Text = "Descripción";
+			// 
+			// txtUpdDescripcion
+			// 
+			this.txtUpdDescripcion.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtUpdDescripcion.Location = new System.Drawing.Point(865, 20);
+			this.txtUpdDescripcion.Multiline = true;
+			this.txtUpdDescripcion.Name = "txtUpdDescripcion";
+			this.txtUpdDescripcion.Size = new System.Drawing.Size(274, 47);
+			this.txtUpdDescripcion.TabIndex = 8;
+			// 
+			// txtUpdCodigo
+			// 
+			this.txtUpdCodigo.Enabled = false;
+			this.txtUpdCodigo.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtUpdCodigo.Location = new System.Drawing.Point(259, 20);
+			this.txtUpdCodigo.Multiline = true;
+			this.txtUpdCodigo.Name = "txtUpdCodigo";
+			this.txtUpdCodigo.Size = new System.Drawing.Size(274, 47);
+			this.txtUpdCodigo.TabIndex = 7;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.Location = new System.Drawing.Point(93, 20);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(160, 57);
+			this.label7.TabIndex = 6;
+			this.label7.Text = "Código";
+			// 
+			// gridModificarProd
+			// 
+			this.gridModificarProd.AllowUserToAddRows = false;
+			this.gridModificarProd.AllowUserToDeleteRows = false;
+			this.gridModificarProd.AllowUserToResizeColumns = false;
+			this.gridModificarProd.AllowUserToResizeRows = false;
+			this.gridModificarProd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.gridModificarProd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.gridModificarProd.BackgroundColor = System.Drawing.Color.Beige;
+			this.gridModificarProd.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+			this.gridModificarProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.gridModificarProd.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+			this.gridModificarProd.Location = new System.Drawing.Point(3, 286);
+			this.gridModificarProd.Name = "gridModificarProd";
+			this.gridModificarProd.ReadOnly = true;
+			this.gridModificarProd.Size = new System.Drawing.Size(1156, 251);
+			this.gridModificarProd.TabIndex = 4;
+			this.gridModificarProd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridModificarProd_CellClick);
+			this.gridModificarProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+			// 
 			// tabPage4
 			// 
 			this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(177)))), ((int)(((byte)(158)))));
+			this.tabPage4.Controls.Add(this.txtDeleteNom);
+			this.tabPage4.Controls.Add(this.label13);
+			this.tabPage4.Controls.Add(this.label12);
+			this.tabPage4.Controls.Add(this.txtDeleteCod);
+			this.tabPage4.Controls.Add(this.btnBuscarEliminar);
+			this.tabPage4.Controls.Add(this.cbxEliminar);
+			this.tabPage4.Controls.Add(this.btnEliminar);
+			this.tabPage4.Controls.Add(this.gridEliminar);
 			this.tabPage4.Location = new System.Drawing.Point(4, 34);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Size = new System.Drawing.Size(1166, 540);
@@ -310,132 +460,119 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Healthy Products";
 			// 
-			// button1
+			// btnBuscarUpdate
 			// 
-			this.button1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(865, 51);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(140, 46);
-			this.button1.TabIndex = 9;
-			this.button1.Text = "Buscar";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.btnBuscarUpdate.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnBuscarUpdate.Location = new System.Drawing.Point(393, 222);
+			this.btnBuscarUpdate.Name = "btnBuscarUpdate";
+			this.btnBuscarUpdate.Size = new System.Drawing.Size(140, 46);
+			this.btnBuscarUpdate.TabIndex = 16;
+			this.btnBuscarUpdate.Text = "Buscar";
+			this.btnBuscarUpdate.UseVisualStyleBackColor = true;
+			this.btnBuscarUpdate.Click += new System.EventHandler(this.btnBuscarUpdate_Click);
 			// 
-			// gridModificarProd
+			// btnActualizar
 			// 
-			this.gridModificarProd.AllowUserToAddRows = false;
-			this.gridModificarProd.AllowUserToDeleteRows = false;
-			this.gridModificarProd.AllowUserToResizeColumns = false;
-			this.gridModificarProd.AllowUserToResizeRows = false;
-			this.gridModificarProd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.gridModificarProd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.gridModificarProd.BackgroundColor = System.Drawing.Color.Beige;
-			this.gridModificarProd.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-			this.gridModificarProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.gridModificarProd.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-			this.gridModificarProd.Location = new System.Drawing.Point(3, 286);
-			this.gridModificarProd.Name = "gridModificarProd";
-			this.gridModificarProd.ReadOnly = true;
-			this.gridModificarProd.Size = new System.Drawing.Size(1156, 251);
-			this.gridModificarProd.TabIndex = 4;
-			this.gridModificarProd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridModificarProd_CellClick);
-			this.gridModificarProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+			this.btnActualizar.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnActualizar.Location = new System.Drawing.Point(936, 170);
+			this.btnActualizar.Name = "btnActualizar";
+			this.btnActualizar.Size = new System.Drawing.Size(192, 46);
+			this.btnActualizar.TabIndex = 17;
+			this.btnActualizar.Text = "Actualizar";
+			this.btnActualizar.UseVisualStyleBackColor = true;
+			this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
 			// 
-			// label7
+			// gridEliminar
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(93, 20);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(160, 57);
-			this.label7.TabIndex = 6;
-			this.label7.Text = "Código";
+			this.gridEliminar.AllowUserToAddRows = false;
+			this.gridEliminar.AllowUserToDeleteRows = false;
+			this.gridEliminar.AllowUserToResizeColumns = false;
+			this.gridEliminar.AllowUserToResizeRows = false;
+			this.gridEliminar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.gridEliminar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.gridEliminar.BackgroundColor = System.Drawing.Color.Beige;
+			this.gridEliminar.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+			this.gridEliminar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.gridEliminar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+			this.gridEliminar.Location = new System.Drawing.Point(7, 97);
+			this.gridEliminar.Name = "gridEliminar";
+			this.gridEliminar.ReadOnly = true;
+			this.gridEliminar.Size = new System.Drawing.Size(841, 440);
+			this.gridEliminar.TabIndex = 5;
+			this.gridEliminar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEliminar_CellClick);
+			this.gridEliminar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
 			// 
-			// txtUpdCodigo
+			// btnEliminar
 			// 
-			this.txtUpdCodigo.Enabled = false;
-			this.txtUpdCodigo.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtUpdCodigo.Location = new System.Drawing.Point(259, 20);
-			this.txtUpdCodigo.Multiline = true;
-			this.txtUpdCodigo.Name = "txtUpdCodigo";
-			this.txtUpdCodigo.Size = new System.Drawing.Size(274, 47);
-			this.txtUpdCodigo.TabIndex = 7;
+			this.btnEliminar.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnEliminar.Location = new System.Drawing.Point(901, 97);
+			this.btnEliminar.Name = "btnEliminar";
+			this.btnEliminar.Size = new System.Drawing.Size(192, 46);
+			this.btnEliminar.TabIndex = 18;
+			this.btnEliminar.Text = "Eliminar";
+			this.btnEliminar.UseVisualStyleBackColor = true;
+			this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
 			// 
-			// txtUpdDescripcion
+			// cbxEliminar
 			// 
-			this.txtUpdDescripcion.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtUpdDescripcion.Location = new System.Drawing.Point(865, 20);
-			this.txtUpdDescripcion.Multiline = true;
-			this.txtUpdDescripcion.Name = "txtUpdDescripcion";
-			this.txtUpdDescripcion.Size = new System.Drawing.Size(274, 47);
-			this.txtUpdDescripcion.TabIndex = 8;
+			this.cbxEliminar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxEliminar.FormattingEnabled = true;
+			this.cbxEliminar.Location = new System.Drawing.Point(7, 58);
+			this.cbxEliminar.Name = "cbxEliminar";
+			this.cbxEliminar.Size = new System.Drawing.Size(349, 33);
+			this.cbxEliminar.TabIndex = 19;
+			this.cbxEliminar.SelectedIndexChanged += new System.EventHandler(this.cbxEliminar_SelectedIndexChanged);
 			// 
-			// label8
+			// btnBuscarEliminar
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(599, 10);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(250, 57);
-			this.label8.TabIndex = 9;
-			this.label8.Text = "Descripción";
+			this.btnBuscarEliminar.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnBuscarEliminar.Location = new System.Drawing.Point(362, 49);
+			this.btnBuscarEliminar.Name = "btnBuscarEliminar";
+			this.btnBuscarEliminar.Size = new System.Drawing.Size(150, 46);
+			this.btnBuscarEliminar.TabIndex = 20;
+			this.btnBuscarEliminar.Text = "Buscar";
+			this.btnBuscarEliminar.UseVisualStyleBackColor = true;
+			this.btnBuscarEliminar.Click += new System.EventHandler(this.btnBuscarEliminar_Click);
 			// 
-			// txtUpdValor
+			// txtDeleteCod
 			// 
-			this.txtUpdValor.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtUpdValor.Location = new System.Drawing.Point(259, 86);
-			this.txtUpdValor.Multiline = true;
-			this.txtUpdValor.Name = "txtUpdValor";
-			this.txtUpdValor.Size = new System.Drawing.Size(274, 47);
-			this.txtUpdValor.TabIndex = 10;
+			this.txtDeleteCod.Enabled = false;
+			this.txtDeleteCod.Font = new System.Drawing.Font("Arial", 26.25F);
+			this.txtDeleteCod.Location = new System.Drawing.Point(901, 206);
+			this.txtDeleteCod.Multiline = true;
+			this.txtDeleteCod.Name = "txtDeleteCod";
+			this.txtDeleteCod.Size = new System.Drawing.Size(200, 43);
+			this.txtDeleteCod.TabIndex = 21;
 			// 
-			// label9
+			// label12
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(130, 86);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(123, 57);
-			this.label9.TabIndex = 11;
-			this.label9.Text = "Valor";
+			this.label12.AutoSize = true;
+			this.label12.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label12.Location = new System.Drawing.Point(891, 146);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(160, 57);
+			this.label12.TabIndex = 22;
+			this.label12.Text = "Código";
 			// 
-			// label10
+			// label13
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(656, 76);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(193, 57);
-			this.label10.TabIndex = 12;
-			this.label10.Text = "Cantidad";
+			this.label13.AutoSize = true;
+			this.label13.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label13.Location = new System.Drawing.Point(891, 252);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(173, 57);
+			this.label13.TabIndex = 23;
+			this.label13.Text = "Nombre";
 			// 
-			// txtUpdCantidad
+			// txtDeleteNom
 			// 
-			this.txtUpdCantidad.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtUpdCantidad.Location = new System.Drawing.Point(865, 86);
-			this.txtUpdCantidad.Multiline = true;
-			this.txtUpdCantidad.Name = "txtUpdCantidad";
-			this.txtUpdCantidad.Size = new System.Drawing.Size(274, 47);
-			this.txtUpdCantidad.TabIndex = 13;
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label11.Location = new System.Drawing.Point(605, 248);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(523, 24);
-			this.label11.TabIndex = 14;
-			this.label11.Text = "Seleccione el código del producto que desea actualizar";
-			// 
-			// cbxUpdateProduct
-			// 
-			this.cbxUpdateProduct.FormattingEnabled = true;
-			this.cbxUpdateProduct.Location = new System.Drawing.Point(29, 239);
-			this.cbxUpdateProduct.Name = "cbxUpdateProduct";
-			this.cbxUpdateProduct.Size = new System.Drawing.Size(317, 33);
-			this.cbxUpdateProduct.TabIndex = 15;
-			this.cbxUpdateProduct.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+			this.txtDeleteNom.Enabled = false;
+			this.txtDeleteNom.Font = new System.Drawing.Font("Arial", 26.25F);
+			this.txtDeleteNom.Location = new System.Drawing.Point(901, 312);
+			this.txtDeleteNom.Multiline = true;
+			this.txtDeleteNom.Name = "txtDeleteNom";
+			this.txtDeleteNom.Size = new System.Drawing.Size(200, 43);
+			this.txtDeleteNom.TabIndex = 24;
 			// 
 			// Productos
 			// 
@@ -457,9 +594,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.gridTabla)).EndInit();
 			this.tabPage3.ResumeLayout(false);
 			this.tabPage3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gridModificarProd)).EndInit();
+			this.tabPage4.ResumeLayout(false);
+			this.tabPage4.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.gridModificarProd)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gridEliminar)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -497,6 +637,16 @@
 		private System.Windows.Forms.TextBox txtUpdValor;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.ComboBox cbxUpdateProduct;
+		private System.Windows.Forms.ComboBox cbxUpdateProd;
+		private System.Windows.Forms.Button btnActualizar;
+		private System.Windows.Forms.Button btnBuscarUpdate;
+		private System.Windows.Forms.ComboBox cbxEliminar;
+		private System.Windows.Forms.Button btnEliminar;
+		private System.Windows.Forms.DataGridView gridEliminar;
+		private System.Windows.Forms.Button btnBuscarEliminar;
+		private System.Windows.Forms.TextBox txtDeleteNom;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.TextBox txtDeleteCod;
 	}
 }
