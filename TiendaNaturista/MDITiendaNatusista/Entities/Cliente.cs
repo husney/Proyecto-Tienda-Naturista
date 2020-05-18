@@ -18,7 +18,17 @@ namespace MDITiendaNatusista.Entities
 
 		public Cliente() { }
 
-		public Cliente(int numero, String documento, String nombre, String direccion , String telefono ,String correo)
+		public Cliente(String documento, String nombre, String direccion , String telefono ,String correo)
+		{
+			
+			this.documento = documento;
+			this.nombre = nombre;
+			this.direccion = direccion;
+			this.telefono = telefono;
+			this.correo = correo;
+		}
+
+		public Cliente(int numero, String documento, String nombre, String direccion, String telefono, String correo)
 		{
 			this.numero = numero;
 			this.documento = documento;

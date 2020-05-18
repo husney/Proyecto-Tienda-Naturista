@@ -294,6 +294,167 @@ namespace MDITiendaNatusista.Bussines
 		}
 
 
+		//----------------------------------
+		//Clientes
+
+		//cliNumero, cliDocumento, cliNombre, cliDireccion, cliTelefono, cliCorreo
+		public bool registrarCliente(Entities.Cliente cli)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "INSERT INTO dbo.clientes (cliDocumento, cliNombre, cliDireccion, cliTelefono, cliCorreo) VALUES (@documento, @nombre, @direccion, @telefono, @correo)";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@documento", cli.Documento);
+				comando.Parameters.AddWithValue("@nombre", cli.Nombre);
+				comando.Parameters.AddWithValue("@direccion", cli.Direccion);
+				comando.Parameters.AddWithValue("@telefono", cli.Telefono);
+				comando.Parameters.AddWithValue("@correo", cli.Correo);
+				comando.ExecuteNonQuery();
+				return true;
+			}catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
+			}
+			
+			}
+
+		//Listar Clientes
+		/*public DataTable agregarClientes()
+		{
+			DataTable datos = new DataTable();
+			SqlConnection c  = con.getConexion();
+
+			String sql = "SELECT cliNumero AS Número, cliDocumento AS Documento, cliNombre AS Nombre ,cliDireccion AS Dirección, cliTelefono AS Telefono, cliCorreo AS Correo FROM dbo.clientes";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataAdapter adaptador = new SqlDataAdapter();
+				adaptador.SelectCommand = comando;
+				adaptador.Fill(datos);
+				return datos;
+			}catch(Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+
+		}*/
+
+		public DataTable agregarClientes(String val, int opt)
+		{
+			
+			String where = "";
+			switch (opt)
+			{
+				
+				case 1:
+					where = "WHERE cliDocumento = @valor";
+					break;
+
+				case 2:
+					where = "WHERE cliNumero = @valor";
+					break;
+
+				case 3:
+					where = "WHERE cliNombre = @valor";
+					break;
+
+				case 4:
+					where = "WHERE cliDireccion = @valor";
+					break;
+
+				case 5:
+					where = "WHERE cliTelefono = @valor";
+					break;
+
+				case 6:
+					where = "WHERE cliCorreo = @valor";
+					break;
+			}
+
+			DataTable data = new DataTable();
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT cliNumero AS Numero, cliDocumento AS Documento, cliNombre AS Nombre, cliDireccion AS Dirección, cliTelefono AS Telefono, cliCorreo AS Correo FROM dbo.clientes "+where;
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@valor", val);
+				SqlDataAdapter adaptador = new SqlDataAdapter();
+				adaptador.SelectCommand = comando;
+				adaptador.Fill(data);
+				return data;
+				
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+			
+		}
+
+		public Entities.Cliente agregarObjetoCliente(String num)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT cliNumero, cliDocumento, cliNombre, cliDireccion, cliTelefono, cliCorreo FROM clientes WHERE cliNumero = @numero";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@numero", num);
+				SqlDataReader lector = comando.ExecuteReader();
+				if (lector.Read())
+				{
+					int n = Convert.ToInt32(lector.GetValue(0));
+					String doc = lector.GetValue(1).ToString();
+					String nom = lector.GetValue(2).ToString();
+					String dir = lector.GetValue(3).ToString();
+					String tel = lector.GetValue(4).ToString();
+					String cor = lector.GetValue(5).ToString();
+					return new Entities.Cliente(n, doc, nom, dir, tel, cor);
+				}
+			}catch(Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+			return null;
+		}
+
+		//cliNumero, cliDocumento, cliNombre, cliDireccion, cliTelefono, cliCorreo
+		public bool actualizarCliente(Entities.Cliente cli)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "UPDATE clientes SET cliDocumento = @documento, cliNombre = @nombre, cliDireccion = @direccion, cliTelefono = @telefono, cliCorreo = @correo WHERE cliNumero = @numero";
+
+			try
+			{
+
+			}
+
+
+		}
 
 
 	}//finClass

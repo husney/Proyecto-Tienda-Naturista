@@ -12,9 +12,18 @@ namespace MDITiendaNatusista.View
 {
 	public partial class Cliente : Form
 	{
+		private Bussines.Controlador controller;
+
 		public Cliente()
 		{
 			InitializeComponent();
+			controller = new Bussines.Controlador();
+			actualizarGrid();
+			llenarCBXOp();
+
+
+
+
 		}
 
 		private void btnNuevoCli_Click(object sender, EventArgs e)
@@ -48,7 +57,23 @@ namespace MDITiendaNatusista.View
 			}
 			else
 			{
-				MessageBox.Show("Registrando...");
+				String doc = this.txtDocumentoCli.Text;
+				String nom = this.txtNombreCli.Text;
+				String dir = this.txtDireccionCli.Text;
+				String tel = this.txtTelefonoCli.Text;
+				String cor = this.txtCorreoCli.Text;
+				MessageBox.Show(doc + nom + dir + tel + cor);
+
+				if (controller.registrarCliente(new Entities.Cliente(doc, nom, dir, tel, cor)))
+				{
+					MessageBox.Show("Cliente registrado");
+					limpiar();
+					actualizarGrid();
+				}
+				else
+				{
+					MessageBox.Show("Error al registrar");
+				}
 			}
 
 
@@ -66,6 +91,152 @@ namespace MDITiendaNatusista.View
 		private void Cliente_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			this.Hide();
+		}
+
+		private void tabPage2_Click(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void actualizarGrid()
+		{
+			this.gridTablaCli.DataSource = controller.agregarClientes("",0);
+			this.gridCliUp.DataSource = controller.agregarClientes("", 0);
+		}
+
+		private void btnBuscarCli_Click(object sender, EventArgs e)
+		{
+
+			
+			
+
+			if(this.txtBuscDocCli.Text == "")
+			{
+				actualizarGrid();
+			}
+			else
+			{
+				String opt = this.cbxOpC.SelectedItem.ToString();
+				int op = 0;
+				if(opt == "Documento")
+				{
+					op = 1;
+				}else if(opt == "Número")
+				{
+					op = 2;
+				}else if(opt == "Nombre")
+				{
+					op = 3;
+				}else if( opt == "Dirección")
+				{
+					op = 4;
+				}else if(opt == "Telefono")
+				{
+					op = 5;
+				}else if(opt == "Correo")
+				{
+					op = 6;
+				}
+
+				String val = this.txtBuscDocCli.Text;
+				this.gridTablaCli.DataSource = controller.agregarClientes(val, op);
+
+			}
+
+
+		}
+
+		private void label5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Cliente_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void llenarCBXOp()
+		{
+
+			List<String> opciones = new List<string>();
+			opciones.Add("Documento");
+			opciones.Add("Número");
+			opciones.Add("Nombre");
+			opciones.Add("Dirección");
+			opciones.Add("Telefono");
+			opciones.Add("Correo");
+
+			this.cbxOpC.DataSource = opciones;
+
+		}
+
+		private void cbxOpC_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void tabPage3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void gridCliUp_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			String val = gridCliUp.CurrentCell.Value.ToString();
+
+			Entities.Cliente cli = controller.agregarObjetoCliente(val);
+			try
+			{
+				this.txtNumUp.Text = Convert.ToString(cli.Numero);
+				this.txtDocUp.Text = cli.Documento;
+				this.txtNomUp.Text = cli.Nombre;
+				this.txtTelUp.Text = cli.Telefono;
+				this.txtDirUp.Text = cli.Direccion;
+				this.txtCorUp.Text = cli.Correo;
+			}catch(Exception ex)
+			{
+				MessageBox.Show("Seleccione el número del cliente");
+			}
+				
+		}
+
+		private void gridCliUp_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void btnActualizar_Click(object sender, EventArgs e)
+		{
+			int num = Convert.ToInt32(this.txtNumUp.Text);
+			String doc = this.txtDocUp.Text;
+			String nom = this.txtNomUp.Text;
+			String dir = this.txtDirUp.Text;
+			String tel = this.txtTelUp.Text;
+			String cor = this.txtCorUp.Text;
+
+			if(controller.actualizarCliente(new Entities.Cliente(num, doc, nom, dir, tel, cor)))
+			{
+				MessageBox.Show("Cliente actualizado");
+				limpiarCliUP();
+				actualizarGrid();
+			}
+			else
+			{
+				MessageBox.Show("Error al actualizar cliente");
+			}
+
+
+		}
+
+		public void limpiarCliUP()
+		{
+			this.txtNumUp.Clear();
+			this.txtDocUp.Clear();
+			this.txtNomUp.Clear();
+			this.txtDirUp.Clear();
+			this.txtTelUp.Clear();
+			this.txtCorUp.Clear();
 		}
 	}
 }
