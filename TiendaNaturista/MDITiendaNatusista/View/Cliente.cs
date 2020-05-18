@@ -102,6 +102,7 @@ namespace MDITiendaNatusista.View
 		{
 			this.gridTablaCli.DataSource = controller.agregarClientes("",0);
 			this.gridCliUp.DataSource = controller.agregarClientes("", 0);
+			this.gridElimCli.DataSource = controller.agregarClientes("", 0);
 		}
 
 		private void btnBuscarCli_Click(object sender, EventArgs e)
@@ -238,5 +239,62 @@ namespace MDITiendaNatusista.View
 			this.txtTelUp.Clear();
 			this.txtCorUp.Clear();
 		}
+
+		private void tabPage4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void gridElimCli_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			
+		}
+
+		private void gridElimCli_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			String val = gridElimCli.CurrentCell.Value.ToString();
+			
+			Entities.Cliente cliente = controller.agregarObjetoCliente(val);
+
+			try
+			{
+				this.txtNomDel.Text = cliente.Nombre;
+				this.txtDocDel.Text = cliente.Documento;
+				this.txtNumeroDel.Text = Convert.ToString(cliente.Numero);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Seleccione el número del cliente");
+			}
+		}
+
+		private void btnDeleteCli_Click(object sender, EventArgs e)
+		{
+			int n = Convert.ToInt32(this.txtNumeroDel.Text);
+			
+			Entities.Cliente cli = new Entities.Cliente();
+			cli.Numero = n;
+
+			if (controller.eliminarCliente(cli))
+			{
+				MessageBox.Show("Cliente Eliminado");
+				limiparDel();
+				actualizarGrid();
+
+			}
+			else
+			{
+				MessageBox.Show("Error al eliminar cliente");
+			}
+			
+		}
+
+		public void limiparDel()
+		{
+			this.txtDocDel.Clear();
+			this.txtNomDel.Clear();
+			this.txtNumeroDel.Clear();
+		}
 	}
+
 }

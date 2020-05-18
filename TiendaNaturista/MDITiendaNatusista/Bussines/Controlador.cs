@@ -450,9 +450,47 @@ namespace MDITiendaNatusista.Bussines
 
 			try
 			{
-
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@documento", cli.Documento);
+				comando.Parameters.AddWithValue("@nombre", cli.Nombre);
+				comando.Parameters.AddWithValue("@direccion", cli.Direccion);
+				comando.Parameters.AddWithValue("@telefono", cli.Telefono);
+				comando.Parameters.AddWithValue("@correo", cli.Correo);
+				comando.Parameters.AddWithValue("@numero", cli.Numero);
+				comando.ExecuteNonQuery();
+				return true;
+			}catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
 			}
 
+
+		}
+
+		public bool eliminarCliente(Entities.Cliente cli)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "DELETE FROM clientes WHERE cliNumero = @numero";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@numero", cli.Numero);
+				comando.ExecuteNonQuery();
+				return true;
+			}catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
+			}
 
 		}
 
