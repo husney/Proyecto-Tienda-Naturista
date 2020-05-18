@@ -28,6 +28,8 @@ namespace MDITiendaNatusista.Entities
 		public double Valor { get { return this.valor; } set { this.valor = value; } }
 		public int Cantidad { get { return this.cantidad; } set { this.cantidad = value; } }
 
+		
+
 
 		public override string ToString()
 		{

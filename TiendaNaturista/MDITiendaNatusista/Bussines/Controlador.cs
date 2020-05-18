@@ -109,12 +109,20 @@ namespace MDITiendaNatusista.Bussines
 			
 		}
 
+
+		//Productos
 		public  ComboBox llenarProductos(ComboBox datos)
 		{
 			SqlConnection c = con.getConexion();
 
+			
 			String sql = " SELECT proCodigo, proDescripcion, proValor, proCantidad FROM dbo.productos";
 
+			Entities.Producto pro1 = new Entities.Producto();
+			pro1.Descripcion = "Todos";
+			datos.Items.Add(pro1);
+
+			
 			try
 			{
 				SqlCommand comando = new SqlCommand(sql, c);
@@ -143,6 +151,7 @@ namespace MDITiendaNatusista.Bussines
 
 		}
 
+		//Productos
 		public DataTable llenarProdutosGrid()
 		{
 			SqlConnection c = con.getConexion();
@@ -168,6 +177,68 @@ namespace MDITiendaNatusista.Bussines
 			{
 				c.Close();
 			}
+		}
+
+		//Productos
+		public DataTable llenarProductosGrid(Entities.Producto prod)
+		{
+			SqlConnection c = con.getConexion();
+			DataTable tabla = new DataTable();
+			
+			String sql = "SELECT proCodigo as Código, proDescripcion as Descripción, proValor as Valor, proCantidad as Cantidad FROM dbo.productos WHERE proDescripcion = @descripcion";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@descripcion", prod.Descripcion);
+				SqlDataAdapter adaptador = new SqlDataAdapter();
+				adaptador.SelectCommand = comando;
+				adaptador.Fill(tabla);
+				return tabla;
+			}
+			catch (Exception ex){
+				return tabla;
+			}
+			finally
+			{
+				c.Close();
+			}
+
+		}
+
+		//Buscar Update Productos
+		public Entities.Producto llenarUpdateProd(String codigo)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT proCodigo, proDescripcion, proValor, proCantidad FROM dbo.productos WHERE proCodigo = @codigo";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@codigo", codigo);
+				SqlDataReader lector = comando.ExecuteReader();
+				if (lector.Read())
+				{
+					String cod = lector.GetValue(0).ToString();
+					String descripcion = lector.GetValue(1).ToString();
+					double val = Convert.ToDouble(lector.GetValue(2).ToString());
+					int cant = Convert.ToInt32(lector.GetValue(3).ToString());
+
+					return new Entities.Producto(cod, descripcion, val, cant);
+				}
+			}catch(Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+
+				c.Close();
+				
+			}
+			return null;
+
 		}
 
 

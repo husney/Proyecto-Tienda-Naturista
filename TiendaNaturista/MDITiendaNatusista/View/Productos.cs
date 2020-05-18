@@ -20,11 +20,18 @@ namespace MDITiendaNatusista.View
 			InitializeComponent();
 			ComboBox prod = controller.llenarProductos(this.cbxProductos);
 			this.cbxProductos = prod;
+			
+			
 
 			DataTable tabla = controller.llenarProdutosGrid();
 			this.gridTabla.DataSource = tabla;
 			
+
+			this.gridModificarProd.DataSource = controller.llenarProdutosGrid();
+
 			
+
+
 		}
 
 		private void btnNuevo_Click(object sender, EventArgs e)
@@ -87,6 +94,64 @@ namespace MDITiendaNatusista.View
 		}
 
 		private void tabPage2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cbxProductos_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Entities.Producto pro = (Entities.Producto)this.cbxProductos.SelectedItem;
+
+			if(pro.Descripcion == "Todos")
+			{
+				gridTabla.DataSource = controller.llenarProdutosGrid();
+			}
+			else { 
+			this.gridTabla.DataSource = controller.llenarProductosGrid(pro);
+			}
+		}
+
+		private void gridTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			
+
+			
+			
+		}
+
+		private void gridModificarProd_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			String valor = this.gridModificarProd.CurrentCell.Value.ToString();
+
+			Entities.Producto prod = controller.llenarUpdateProd(valor);
+
+			try { 
+			this.txtUpdCodigo.Text = prod.Codigo;
+			this.txtUpdDescripcion.Text = prod.Descripcion;
+			this.txtUpdValor.Text = Convert.ToString(prod.Valor);
+			this.txtUpdCantidad.Text = Convert.ToString(prod.Cantidad);
+			}catch(Exception ex)
+			{
+				MessageBox.Show("Seleccione el Código del producto");
+			}
+
+
+
+
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
 		}
