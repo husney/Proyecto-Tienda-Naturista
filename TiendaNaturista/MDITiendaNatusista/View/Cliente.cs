@@ -62,7 +62,7 @@ namespace MDITiendaNatusista.View
 				String dir = this.txtDireccionCli.Text;
 				String tel = this.txtTelefonoCli.Text;
 				String cor = this.txtCorreoCli.Text;
-				MessageBox.Show(doc + nom + dir + tel + cor);
+				
 
 				if (controller.registrarCliente(new Entities.Cliente(doc, nom, dir, tel, cor)))
 				{
