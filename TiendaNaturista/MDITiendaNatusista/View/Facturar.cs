@@ -87,7 +87,7 @@ namespace MDITiendaNatusista.View
 			Entities.Vendedor ve = (Entities.Vendedor)this.cbxFacVen.SelectedItem;
 			int cant = Convert.ToInt32(this.numCan.Value);
 
-			MessageBox.Show("Codigo: "+p.Codigo+" Documento: "+ c.Documento+" Cantidad:" + cant);
+
 
 			
 			if (ve.User == "Seleccione el vendedor")
@@ -131,19 +131,25 @@ namespace MDITiendaNatusista.View
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			double total = Convert.ToDouble(this.txtValTotal.Text);
+			try { 
+				double total = Convert.ToDouble(this.txtValTotal.Text);
 
-			if (controller.realizarVenta(total))
+				if (controller.realizarVenta(total))
+				{
+					MessageBox.Show("Venta relizada");
+					this.gridFactura.DataSource = null;
+					this.txtValTotal.Text = null;
+					this.txtValProd.Text = null;
+					this.numCan.Value = 0;
+
+				}
+				else
+				{
+					MessageBox.Show("Error en la venta");
+				}
+			}catch(Exception ex)
 			{
-				MessageBox.Show("Venta relizada");
-				this.gridFactura.DataSource = null;
-				this.txtValTotal.Text = null;
-				this.txtValProd.Text = null;
-				this.numCan.Value = 0;
-			}
-			else
-			{
-				MessageBox.Show("Error en la venta");
+				MessageBox.Show("Agrege los productos que se venderan");
 			}
 		}
 	}

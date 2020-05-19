@@ -18,6 +18,8 @@ namespace MDITiendaNatusista.Bussines
 		public Controlador()
 		{
 			con = new DataAccess.Conexion();
+			rel = obtenerRel();
+
 		}
 
 		public bool conectar(String user, String password)
@@ -590,7 +592,7 @@ namespace MDITiendaNatusista.Bussines
 				if (lector.Read())
 				{
 					int n = Convert.ToInt32(lector.GetValue(0));
-					return n;
+					return n +1;
 				}
 				else
 				{
@@ -610,11 +612,11 @@ namespace MDITiendaNatusista.Bussines
 		}
 
 		int rel ;
-
+		
 		public bool registrarFactura(Entities.Producto pro, Entities.Cliente cli, Entities.Vendedor ven, int cantidad)
 		{
 			int estado = 0;
-			rel = obtenerRel();
+			//rel = obtenerRel();
 			SqlConnection c = con.getConexion();
 
 			String sql = "INSERT INTO detalleFactura (facEstado, codigoProd, cantidadProd, usuarioVen, cliDocumento, facRel) VALUES (@estado, @codigo, @cantidad, @vendedor, @cliente, @rel)";
@@ -629,6 +631,8 @@ namespace MDITiendaNatusista.Bussines
 				comando.Parameters.AddWithValue("@cliente", cli.Documento);
 				comando.Parameters.AddWithValue("@rel", rel);
 				comando.ExecuteNonQuery();
+				registrarVentas(pro.Codigo, cantidad);
+
 				return true;
 			}catch (Exception ex)
 			{
@@ -640,16 +644,39 @@ namespace MDITiendaNatusista.Bussines
 			}
 		}
 
+		public void registrarVentas(String codigo, double cantidad)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "UPDATE productos SET proCantidad = proCantidad - @menos WHERE proCodigo = @producto";
+
+			
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@menos", cantidad);
+				comando.Parameters.AddWithValue("@producto", codigo);
+				comando.ExecuteNonQuery();
+				Console.WriteLine("Actualización exitosa");
+			}
+			catch (Exception ex){
+				Console.WriteLine("Erro al actualizar inventario");
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
 		
 
 		public DataTable gridFacturando()
 		{
 			SqlConnection c = con.getConexion();
-			Console.WriteLine(c.State+"-------------------");
+			
 			DataTable facturando = new DataTable();
 
 			String sql = "SELECT detalleFactura.codigoProd AS Código, productos.proDescripcion AS Nombre, detalleFactura.cantidadProd AS Cantidad, " +
-				"detalleFactura.cantidadProd * productos.proValor AS Valor, detalleFactura.usuarioVen AS Vendedor, detalleFactura.cliDocumento AS Cliente FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE detalleFactura.facRel = 1;";
+				"detalleFactura.cantidadProd * productos.proValor AS Valor, detalleFactura.usuarioVen AS Vendedor, detalleFactura.cliDocumento AS Cliente FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE detalleFactura.facRel = @rel";
 
 
 
@@ -706,20 +733,18 @@ namespace MDITiendaNatusista.Bussines
 		{
 			SqlConnection c = con.getConexion();
 
-			String sql = "INSERT INTO factura (facFecha,facValorTotal, facRel) VALUES (@fecha, @valor, @rel)";
+			String sql = "INSERT INTO factura (facFecha,facValorTotal, facRel) VALUES (GETDATE(), @valor, @rel)";
 			
 			try
 			{
 				SqlCommand comando = new SqlCommand(sql, c);
-				comando.Parameters.AddWithValue("@fecha", );
-				
-
-				if (lector.Read())
-				{
-					
-				}
-
-				
+				Console.WriteLine(rel);
+				comando.Parameters.AddWithValue("@valor", total);
+				comando.Parameters.AddWithValue("@rel", rel);
+				comando.ExecuteNonQuery();
+				cambioEstado();
+				rel = rel + 1;
+				Console.WriteLine(rel);
 				return true;
 			}catch (Exception ex)
 			{
@@ -731,7 +756,34 @@ namespace MDITiendaNatusista.Bussines
 			}
 		}
 
-		
+		public void aumentarContador()
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "";
+		}
+
+		public void cambioEstado()
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "UPDATE detalleFactura SET facEstado = 1 WHERE facRel = @rel ";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@rel", rel);
+				comando.ExecuteNonQuery();
+				
+			}catch(Exception ex)
+			{
+				
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
 
 	}//finClass
 }
