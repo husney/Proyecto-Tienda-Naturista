@@ -15,6 +15,7 @@ namespace MDITiendaNatusista.DataAccess
 		{
 			try
 			{
+				conexion.Close();
 				Console.WriteLine("Conectandoce...");
 				conexion.Open();
 				Console.WriteLine("Conectado Correctamente");

@@ -22,7 +22,8 @@ namespace MDITiendaNatusista.View
 			this.txtValTotal.Text = null;
 			this.txtValProd.Text = null;
 			
-			
+
+
 		}
 
 		private void cbxOpC_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,11 +98,11 @@ namespace MDITiendaNatusista.View
 			if(this.numCan.Value != 0)
 				{
 					
-					if (controller.ingresarFAcDetalle(p, c, cant, ve))
+					if (controller.registrarFactura(p, c, ve, cant))
 					{
 						MessageBox.Show("Produto Registrado");
 						double valT = Convert.ToDouble(this.txtValProd.Text);
-						gridFacturando.DataSource = controller.gridFacturando();
+						this.gridFactura.DataSource = controller.gridFacturando();
 						sum = sum + (Convert.ToDouble(this.txtValProd.Text));
 						this.txtValTotal.Text = sum.ToString();
 
@@ -116,6 +117,34 @@ namespace MDITiendaNatusista.View
 
 
 
+		}
+
+		private void gridFacturando_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void gridFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			double total = Convert.ToDouble(this.txtValTotal.Text);
+
+			if (controller.realizarVenta(total))
+			{
+				MessageBox.Show("Venta relizada");
+				this.gridFactura.DataSource = null;
+				this.txtValTotal.Text = null;
+				this.txtValProd.Text = null;
+				this.numCan.Value = 0;
+			}
+			else
+			{
+				MessageBox.Show("Error en la venta");
+			}
 		}
 	}
 }

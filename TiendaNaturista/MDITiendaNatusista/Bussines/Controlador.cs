@@ -573,34 +573,64 @@ namespace MDITiendaNatusista.Bussines
 				c.Close();
 			}
 		}
-		int rel = 1;
+		
+		
 
-		public bool ingresarFAcDetalle(Entities.Producto pro, Entities.Cliente cli, int cantidad, Entities.Vendedor ven)
+		public int obtenerRel()
 		{
 			SqlConnection c = con.getConexion();
-			c.Close();
-			c.Open();
+			//--
 
-			
-			int estado = 0;
-
-			String sql = "INSERT INTO detalleFactura (facEstado, codigoProd, cantidadProd, usuarioVen, cliDocumento, facRel)VALUES ( @estado, @codigoProd, @cantidad, @usuario, @cliente, @relacion )";
+			String sql = "SELECT MAX(facRel) from detalleFactura";
 
 			try
 			{
-				Console.WriteLine(rel + estado + pro.Codigo + cantidad + ven.User + cli.Documento);
 				SqlCommand comando = new SqlCommand(sql, c);
-				comando.Parameters.AddWithValue("@relacion", rel);
-				comando.Parameters.AddWithValue("@estado", estado);
-				comando.Parameters.AddWithValue("@codigoProd", pro.Codigo.ToString());
-				comando.Parameters.AddWithValue("@cantidad", Convert.ToInt32(cantidad));
-				comando.Parameters.AddWithValue("@usuario", ven.User.ToString());
-				comando.Parameters.AddWithValue("@cliente", cli.Documento.ToString());
+				SqlDataReader lector = comando.ExecuteReader();
+				if (lector.Read())
+				{
+					int n = Convert.ToInt32(lector.GetValue(0));
+					return n;
+				}
+				else
+				{
+					return 0;
+				}
 				
+			}
+			catch
+			{
+				return 0;
+			}
+			finally
+			{
+				c.Close();
+			}
+			
+		}
+
+		int rel ;
+
+		public bool registrarFactura(Entities.Producto pro, Entities.Cliente cli, Entities.Vendedor ven, int cantidad)
+		{
+			int estado = 0;
+			rel = obtenerRel();
+			SqlConnection c = con.getConexion();
+
+			String sql = "INSERT INTO detalleFactura (facEstado, codigoProd, cantidadProd, usuarioVen, cliDocumento, facRel) VALUES (@estado, @codigo, @cantidad, @vendedor, @cliente, @rel)";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@estado", estado);
+				comando.Parameters.AddWithValue("@codigo", pro.Codigo);
+				comando.Parameters.AddWithValue("@cantidad", cantidad);
+				comando.Parameters.AddWithValue("@vendedor", ven.User);
+				comando.Parameters.AddWithValue("@cliente", cli.Documento);
+				comando.Parameters.AddWithValue("@rel", rel);
 				comando.ExecuteNonQuery();
 				return true;
-			}
-			catch (Exception ex)
+			}catch (Exception ex)
 			{
 				return false;
 			}
@@ -608,9 +638,9 @@ namespace MDITiendaNatusista.Bussines
 			{
 				c.Close();
 			}
-
-
 		}
+
+		
 
 		public DataTable gridFacturando()
 		{
@@ -618,8 +648,10 @@ namespace MDITiendaNatusista.Bussines
 			Console.WriteLine(c.State+"-------------------");
 			DataTable facturando = new DataTable();
 
-			String sql = "SELECT detalleFactura.codigoProd AS Código, productos.proDescripcion AS Nombre, detalleFactura.cantidadProd AS Cantidad, detalleFactura.cantidadProd * productos.proValor AS Valor, detalleFactura.usuarioVen AS Vendedor, detalleFactura.cliDocumento AS Cliente"+
-						"FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE detalleFactura.facRel = @rel";
+			String sql = "SELECT detalleFactura.codigoProd AS Código, productos.proDescripcion AS Nombre, detalleFactura.cantidadProd AS Cantidad, " +
+				"detalleFactura.cantidadProd * productos.proValor AS Valor, detalleFactura.usuarioVen AS Vendedor, detalleFactura.cliDocumento AS Cliente FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE detalleFactura.facRel = 1;";
+
+
 
 			try
 			{
@@ -667,6 +699,35 @@ namespace MDITiendaNatusista.Bussines
 			finally
 			{
 
+			}
+		}
+
+		public bool realizarVenta(double total)
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "INSERT INTO factura (facFecha,facValorTotal, facRel) VALUES (@fecha, @valor, @rel)";
+			
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@fecha", );
+				
+
+				if (lector.Read())
+				{
+					
+				}
+
+				
+				return true;
+			}catch (Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
 			}
 		}
 
