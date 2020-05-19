@@ -69,8 +69,8 @@ namespace MDITiendaNatusista.View
 			}
 			else
 			{
-				
-				
+
+				try { 
 				if(controller.registrarProducto(new Entities.Producto(this.txtCodigo.Text, this.txtDescripcion.Text, Convert.ToDouble(this.txtValor.Text), Convert.ToInt32(this.txtCantidad.Text))))
 				{
 					MessageBox.Show("Producto Registrado");
@@ -81,6 +81,11 @@ namespace MDITiendaNatusista.View
 				else
 				{
 					MessageBox.Show("Error al registrar producto");
+				
+				}
+				}catch(Exception ex)
+				{
+					MessageBox.Show("Ingrese los valores adecuados");
 				}
 			}
 		}

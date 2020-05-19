@@ -9,21 +9,29 @@ namespace MDITiendaNatusista.Entities
 	class DetalleFactura
 	{
 		private int numero;
-		private String producto;
-		private int cantidad;
+		private int estado;
+		private String codigoProducto;
+		private int cantidadProducto;
+		private String usuarioVendedor;
+		private String cliDocumento;
 
 		public DetalleFactura() { }
 
-		public DetalleFactura(int numero, String producto, int cantidad)
+		public DetalleFactura(int numero, int estado, String codigoProducto, int cantidadProducto, String usuarioVendedor, String cliDocumento)
 		{
 			this.numero = numero;
-			this.producto = producto;
-			this.cantidad = cantidad;
+			this.codigoProducto = codigoProducto;
+			this.cantidadProducto = cantidadProducto;
+			this.usuarioVendedor = usuarioVendedor;
+			this.cliDocumento = cliDocumento;
 		}
 
 		public int Numero { get { return this.numero; } set { this.numero = value; } }
-		public String Producto { get { return this.producto; }  set { this.producto = value; } }
-		public int Cantidad { get { return this.cantidad; } set { this.cantidad = value; } }
+		public int Estado { get { return this.estado; } set { this.estado = value; } }
+		public String CodigoProducto { get { return this.codigoProducto; } set { this.codigoProducto = value; } }
+		public int CantidadProducto { get { return this.cantidadProducto; } set { this.cantidadProducto = value; } }
+		public String UsuarioVendedor { get { return this.usuarioVendedor;  } set { this.usuarioVendedor = value; } }
+		public String ClienteDocumento { get { return this.cliDocumento; } set { this.cliDocumento = value; } }
 
 		public override string ToString()
 		{

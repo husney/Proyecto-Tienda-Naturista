@@ -59,6 +59,7 @@ namespace MDITiendaNatusista
 				if(control.conectar(this.txtUsuario.Text, this.txtContraseña.Text) == true)
 				{
 					PrincipalView pv = new PrincipalView();
+					
 					pv.Visible = true;
 					this.Hide();
 				}

@@ -16,8 +16,7 @@ namespace MDITiendaNatusista
 		{
 			
 			InitializeComponent();
-			
-
+		
 
 		}
 
@@ -72,6 +71,21 @@ namespace MDITiendaNatusista
 		{
 			View.Cliente cli = new View.Cliente();
 			cli.Show();
+		}
+
+		private void facturarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			View.Facturar fac = new View.Facturar();
+			fac.Show();
+		}
+
+		
+
+		
+
+		private void txtPrueba_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

@@ -10,7 +10,10 @@ namespace MDITiendaNatusista.Bussines
 {
 	class Controlador 
 	{
+		
+		
 		DataAccess.Conexion con;
+		
 
 		public Controlador()
 		{
@@ -19,8 +22,10 @@ namespace MDITiendaNatusista.Bussines
 
 		public bool conectar(String user, String password)
 		{
+			
 			SqlConnection c = con.getConexion();
 
+			
 			//venUsuario venContraseña
 			String sql = "SELECT * FROM dbo.vendedores WHERE venUsuario = @user AND venContraseña = @pass";
 
@@ -32,12 +37,16 @@ namespace MDITiendaNatusista.Bussines
 				SqlDataReader lector = comando.ExecuteReader();
 				if (lector.Read())
 				{
+					
 					String userDb = lector.GetValue(0).ToString();
 					String passDb = lector.GetValue(1).ToString();
+					
 
-					if(user.Equals(userDb) && password.Equals(passDb))
+					if (user.Equals(userDb) && password.Equals(passDb))
 					{
+						
 						return true;
+						
 					}
 
 
@@ -110,6 +119,7 @@ namespace MDITiendaNatusista.Bussines
 		}
 
 
+		//llenar cbx Productos
 		public List<Entities.Producto> llenarCbx()
 		{
 			List<Entities.Producto> productos = new List<Entities.Producto>();
@@ -144,11 +154,46 @@ namespace MDITiendaNatusista.Bussines
 			}
 
 		}
-		
 
-	
 
-		
+		public List<Entities.Producto> llenarCbxFac()
+		{
+			List<Entities.Producto> productos = new List<Entities.Producto>();
+			SqlConnection c = con.getConexion();
+
+			
+
+			try
+			{
+				String sql = "SELECT proCodigo, proDescripcion, proValor, proCantidad FROM dbo.productos";
+
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataReader lector = comando.ExecuteReader();
+
+
+				while (lector.Read())
+				{
+					String cod = lector.GetValue(0).ToString();
+					String desc = lector.GetValue(1).ToString();
+					double val = Convert.ToDouble(lector.GetValue(2));
+					int can = Convert.ToInt32(lector.GetValue(3));
+					productos.Add(new Entities.Producto(cod, desc, val, can));
+				}
+				return productos;
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+
+			}
+
+		}
+
+
 
 
 
@@ -494,6 +539,138 @@ namespace MDITiendaNatusista.Bussines
 
 		}
 
+		public List<Entities.Cliente> llenarCbxCliente()
+		{
+			List<Entities.Cliente> clientes = new List<Entities.Cliente>();
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT cliDocumento, cliNumero, cliNombre, cliDireccion, cliTelefono, cliCorreo FROM clientes";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataReader lector = comando.ExecuteReader();
+				while (lector.Read())
+				{
+					String doc = lector.GetValue(0).ToString();
+					int num = Convert.ToInt32(lector.GetValue(1));
+					String nombre = lector.GetValue(2).ToString();
+					String direc = lector.GetValue(3).ToString();
+					String tel = lector.GetValue(4).ToString();
+					String cor = lector.GetValue(5).ToString();
+
+					clientes.Add(new Entities.Cliente(num, doc, nombre, direc, tel, cor));
+						
+				}
+				return clientes;
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
+		int rel = 1;
+
+		public bool ingresarFAcDetalle(Entities.Producto pro, Entities.Cliente cli, int cantidad, Entities.Vendedor ven)
+		{
+			SqlConnection c = con.getConexion();
+			c.Close();
+			c.Open();
+
+			
+			int estado = 0;
+
+			String sql = "INSERT INTO detalleFactura (facEstado, codigoProd, cantidadProd, usuarioVen, cliDocumento, facRel)VALUES ( @estado, @codigoProd, @cantidad, @usuario, @cliente, @relacion )";
+
+			try
+			{
+				Console.WriteLine(rel + estado + pro.Codigo + cantidad + ven.User + cli.Documento);
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@relacion", rel);
+				comando.Parameters.AddWithValue("@estado", estado);
+				comando.Parameters.AddWithValue("@codigoProd", pro.Codigo.ToString());
+				comando.Parameters.AddWithValue("@cantidad", Convert.ToInt32(cantidad));
+				comando.Parameters.AddWithValue("@usuario", ven.User.ToString());
+				comando.Parameters.AddWithValue("@cliente", cli.Documento.ToString());
+				
+				comando.ExecuteNonQuery();
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				c.Close();
+			}
+
+
+		}
+
+		public DataTable gridFacturando()
+		{
+			SqlConnection c = con.getConexion();
+			Console.WriteLine(c.State+"-------------------");
+			DataTable facturando = new DataTable();
+
+			String sql = "SELECT detalleFactura.codigoProd AS Código, productos.proDescripcion AS Nombre, detalleFactura.cantidadProd AS Cantidad, detalleFactura.cantidadProd * productos.proValor AS Valor, detalleFactura.usuarioVen AS Vendedor, detalleFactura.cliDocumento AS Cliente"+
+						"FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE detalleFactura.facRel = @rel";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				comando.Parameters.AddWithValue("@rel", rel);
+				SqlDataAdapter adaptador = new SqlDataAdapter();
+				adaptador.SelectCommand = comando;
+				adaptador.Fill(facturando);
+				return facturando;
+			}catch(Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
+
+		public List<Entities.Vendedor> cbxVendedores()
+		{
+			List<Entities.Vendedor> vendedores = new List<Entities.Vendedor>();
+			SqlConnection c = con.getConexion();
+			vendedores.Add(new Entities.Vendedor("Seleccione el vendedor", ""));
+
+			String sql = "SELECT venUsuario, venContraseña FROM vendedores;";
+			
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataReader lector = comando.ExecuteReader();
+				while(lector.Read()){
+					String us = lector.GetValue(0).ToString();
+					Entities.Vendedor ven = new Entities.Vendedor();
+					ven.User = us;
+					vendedores.Add(ven);
+
+				}
+				return vendedores;
+			}
+			catch(Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+
+			}
+		}
+
+		
 
 	}//finClass
 }

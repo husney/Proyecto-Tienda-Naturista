@@ -48,7 +48,7 @@ namespace MDITiendaNatusista.Entities
 
 		public override string ToString()
 		{
-			return this.numero.ToString();
+			return "CC: "+this.documento.ToString()+ " Nombre: "+this.nombre;
 		}
 	}
 }

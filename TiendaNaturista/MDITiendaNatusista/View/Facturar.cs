@@ -12,9 +12,110 @@ namespace MDITiendaNatusista.View
 {
 	public partial class Facturar : Form
 	{
+		Bussines.Controlador controller;
 		public Facturar()
 		{
+			
 			InitializeComponent();
+			controller = new Bussines.Controlador();
+			llenarCbx();
+			this.txtValTotal.Text = null;
+			this.txtValProd.Text = null;
+			
+			
+		}
+
+		private void cbxOpC_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+		{
+			Entities.Producto b = (Entities.Producto) this.cbxFacProd.SelectedItem;
+
+			int cantidad = Convert.ToInt32(this.numCan.Value);
+
+			double valP = b.Valor * cantidad;
+
+			this.txtValProd.Text = valP.ToString();
+;
+
+
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Facturar_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		public void llenarCbx()
+		{
+			this.cbxFacProd.DataSource = controller.llenarCbxFac();
+			this.cbxCliFac.DataSource = controller.llenarCbxCliente();
+			this.cbxFacVen.DataSource = controller.cbxVendedores();
+		}
+
+		private void Facturar_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			this.Hide();
+		}
+
+		private void cbxFacProd_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Entities.Producto prod = (Entities.Producto)this.cbxFacProd.SelectedItem;
+
+			this.txtValUnit.Text = prod.Valor.ToString();
+		}
+
+		private void txtValProd_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		double sum = 0;
+		private void btnAgregarFac_Click(object sender, EventArgs e)
+		{
+			Entities.Producto p = (Entities.Producto)this.cbxFacProd.SelectedItem;
+			Entities.Cliente c = (Entities.Cliente) this.cbxCliFac.SelectedItem;
+			Entities.Vendedor ve = (Entities.Vendedor)this.cbxFacVen.SelectedItem;
+			int cant = Convert.ToInt32(this.numCan.Value);
+
+			MessageBox.Show("Codigo: "+p.Codigo+" Documento: "+ c.Documento+" Cantidad:" + cant);
+
+			
+			if (ve.User == "Seleccione el vendedor")
+			{
+				MessageBox.Show("Seleccione el vendedor");
+			}
+			else { 
+			if(this.numCan.Value != 0)
+				{
+					
+					if (controller.ingresarFAcDetalle(p, c, cant, ve))
+					{
+						MessageBox.Show("Produto Registrado");
+						double valT = Convert.ToDouble(this.txtValProd.Text);
+						gridFacturando.DataSource = controller.gridFacturando();
+						sum = sum + (Convert.ToDouble(this.txtValProd.Text));
+						this.txtValTotal.Text = sum.ToString();
+
+					}
+					else
+					{
+						MessageBox.Show("Error al registrar producto");
+					}
+				}
+			}
+
+
+
+
 		}
 	}
 }
