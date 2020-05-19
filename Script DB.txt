@@ -1,0 +1,97 @@
+USE [tienda_naturista]
+GO
+/****** Object:  Table [dbo].[clientes]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[clientes](
+	[cliDocumento] [varchar](10) NOT NULL,
+	[cliNumero] [int] IDENTITY(1,1) NOT NULL,
+	[cliNombre] [varchar](50) NULL,
+	[cliDireccion] [varchar](100) NULL,
+	[cliTelefono] [varchar](10) NULL,
+	[cliCorreo] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cliDocumento] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[detalleFactura]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[detalleFactura](
+	[facDetalle] [int] IDENTITY(1,1) NOT NULL,
+	[facEstado] [int] NOT NULL,
+	[codigoProd] [varchar](10) NOT NULL,
+	[cantidadProd] [int] NOT NULL,
+	[usuarioVen] [varchar](20) NOT NULL,
+	[cliDocumento] [varchar](10) NOT NULL,
+	[facRel] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[facDetalle] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[factura]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[factura](
+	[facNumero] [int] IDENTITY(1,1) NOT NULL,
+	[facFecha] [datetime] NULL,
+	[facValorTotal] [decimal](12, 2) NULL,
+	[facRel] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[facNumero] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[productos]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[productos](
+	[proCodigo] [varchar](10) NOT NULL,
+	[proDescripcion] [varchar](50) NOT NULL,
+	[proValor] [decimal](12, 2) NOT NULL,
+	[proCantidad] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[proCodigo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[vendedores]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[vendedores](
+	[venUsuario] [varchar](20) NOT NULL,
+	[venContraseña] [varchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[venUsuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([cliDocumento])
+REFERENCES [dbo].[clientes] ([cliDocumento])
+GO
+ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([codigoProd])
+REFERENCES [dbo].[productos] ([proCodigo])
+GO
+ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([usuarioVen])
+REFERENCES [dbo].[vendedores] ([venUsuario])
+GO
+ALTER TABLE [dbo].[factura]  WITH CHECK ADD FOREIGN KEY([facRel])
+REFERENCES [dbo].[detalleFactura] ([facDetalle])
+GO

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrincipalView));
 			this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.facturarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,28 +53,28 @@
 			// productosToolStripMenuItem
 			// 
 			this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-			this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.productosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
 			this.productosToolStripMenuItem.Text = "Productos";
 			this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
 			// 
 			// facturarToolStripMenuItem
 			// 
 			this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-			this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.facturarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
 			this.facturarToolStripMenuItem.Text = "Facturar";
 			this.facturarToolStripMenuItem.Click += new System.EventHandler(this.facturarToolStripMenuItem_Click);
 			// 
 			// inventarioToolStripMenuItem
 			// 
 			this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
-			this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
 			this.inventarioToolStripMenuItem.Text = "Inventario";
 			this.inventarioToolStripMenuItem.Click += new System.EventHandler(this.inventarioToolStripMenuItem_Click);
 			// 
 			// clientesToolStripMenuItem
 			// 
 			this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-			this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.clientesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
 			this.clientesToolStripMenuItem.Text = "Clientes";
 			this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
 			// 
@@ -93,6 +94,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(778, 551);
 			this.Controls.Add(this.menuStrip1);
 			this.IsMdiContainer = true;

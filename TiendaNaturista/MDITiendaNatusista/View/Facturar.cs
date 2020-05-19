@@ -152,5 +152,10 @@ namespace MDITiendaNatusista.View
 				MessageBox.Show("Agrege los productos que se venderan");
 			}
 		}
+
+		private void label6_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

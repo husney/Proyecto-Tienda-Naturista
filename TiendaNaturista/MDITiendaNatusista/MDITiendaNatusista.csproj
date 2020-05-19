@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bussines\Controlador.cs" />
-    <Compile Include="DataAccess\Conexion.cs" />
+    <Compile Include="Properties\DataAccess\Conexion.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\DetalleFactura.cs" />
     <Compile Include="Entities\Factura.cs" />
