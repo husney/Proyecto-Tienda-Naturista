@@ -209,22 +209,30 @@ namespace MDITiendaNatusista.View
 
 		private void btnActualizar_Click(object sender, EventArgs e)
 		{
-			int num = Convert.ToInt32(this.txtNumUp.Text);
-			String doc = this.txtDocUp.Text;
-			String nom = this.txtNomUp.Text;
-			String dir = this.txtDirUp.Text;
-			String tel = this.txtTelUp.Text;
-			String cor = this.txtCorUp.Text;
+			try
+			{
+				int num = Convert.ToInt32(this.txtNumUp.Text);
+				String doc = this.txtDocUp.Text;
+				String nom = this.txtNomUp.Text;
+				String dir = this.txtDirUp.Text;
+				String tel = this.txtTelUp.Text;
+				String cor = this.txtCorUp.Text;
 
-			if(controller.actualizarCliente(new Entities.Cliente(num, doc, nom, dir, tel, cor)))
-			{
-				MessageBox.Show("Cliente actualizado");
-				limpiarCliUP();
-				actualizarGrid();
+
+				if (controller.actualizarCliente(new Entities.Cliente(num, doc, nom, dir, tel, cor)))
+				{
+					MessageBox.Show("Cliente actualizado");
+					limpiarCliUP();
+					actualizarGrid();
+				}
+				else
+				{
+					MessageBox.Show("Error al actualizar cliente");
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show("Error al actualizar cliente");
+				MessageBox.Show("Escoja un cliente");
 			}
 
 
@@ -270,10 +278,16 @@ namespace MDITiendaNatusista.View
 
 		private void btnDeleteCli_Click(object sender, EventArgs e)
 		{
-			int n = Convert.ToInt32(this.txtNumeroDel.Text);
+			if(this.txtDocDel.Text == "")
+			{
+				MessageBox.Show("Escoja un Cliente");
+			}
+			else { 
+
+			String documento = this.txtDocDel.Text;
 			
 			Entities.Cliente cli = new Entities.Cliente();
-			cli.Numero = n;
+			cli.Documento = documento;
 
 			if (controller.eliminarCliente(cli))
 			{
@@ -286,7 +300,8 @@ namespace MDITiendaNatusista.View
 			{
 				MessageBox.Show("Error al eliminar cliente");
 			}
-			
+			}
+
 		}
 
 		public void limiparDel()

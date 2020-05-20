@@ -64,15 +64,15 @@
 			this.txtNumUp = new System.Windows.Forms.TextBox();
 			this.gridCliUp = new System.Windows.Forms.DataGridView();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.cbxOp = new System.Windows.Forms.ComboBox();
-			this.gridElimCli = new System.Windows.Forms.DataGridView();
-			this.label13 = new System.Windows.Forms.Label();
-			this.txtNumeroDel = new System.Windows.Forms.TextBox();
+			this.btnDeleteCli = new System.Windows.Forms.Button();
 			this.txtNomDel = new System.Windows.Forms.TextBox();
 			this.txtDocDel = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
-			this.btnDeleteCli = new System.Windows.Forms.Button();
+			this.label13 = new System.Windows.Forms.Label();
+			this.txtNumeroDel = new System.Windows.Forms.TextBox();
+			this.gridElimCli = new System.Windows.Forms.DataGridView();
+			this.cbxOp = new System.Windows.Forms.ComboBox();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -146,7 +146,7 @@
 			this.txtCorreoCli.Location = new System.Drawing.Point(501, 398);
 			this.txtCorreoCli.Multiline = true;
 			this.txtCorreoCli.Name = "txtCorreoCli";
-			this.txtCorreoCli.Size = new System.Drawing.Size(309, 47);
+			this.txtCorreoCli.Size = new System.Drawing.Size(424, 47);
 			this.txtCorreoCli.TabIndex = 17;
 			// 
 			// txtTelefonoCli
@@ -155,7 +155,7 @@
 			this.txtTelefonoCli.Location = new System.Drawing.Point(501, 317);
 			this.txtTelefonoCli.Multiline = true;
 			this.txtTelefonoCli.Name = "txtTelefonoCli";
-			this.txtTelefonoCli.Size = new System.Drawing.Size(309, 47);
+			this.txtTelefonoCli.Size = new System.Drawing.Size(424, 47);
 			this.txtTelefonoCli.TabIndex = 16;
 			// 
 			// txtDireccionCli
@@ -164,7 +164,7 @@
 			this.txtDireccionCli.Location = new System.Drawing.Point(501, 233);
 			this.txtDireccionCli.Multiline = true;
 			this.txtDireccionCli.Name = "txtDireccionCli";
-			this.txtDireccionCli.Size = new System.Drawing.Size(309, 47);
+			this.txtDireccionCli.Size = new System.Drawing.Size(424, 47);
 			this.txtDireccionCli.TabIndex = 15;
 			// 
 			// txtNombreCli
@@ -173,7 +173,7 @@
 			this.txtNombreCli.Location = new System.Drawing.Point(501, 136);
 			this.txtNombreCli.Multiline = true;
 			this.txtNombreCli.Name = "txtNombreCli";
-			this.txtNombreCli.Size = new System.Drawing.Size(309, 47);
+			this.txtNombreCli.Size = new System.Drawing.Size(424, 47);
 			this.txtNombreCli.TabIndex = 14;
 			// 
 			// label4
@@ -222,7 +222,7 @@
 			this.txtDocumentoCli.Location = new System.Drawing.Point(501, 50);
 			this.txtDocumentoCli.Multiline = true;
 			this.txtDocumentoCli.Name = "txtDocumentoCli";
-			this.txtDocumentoCli.Size = new System.Drawing.Size(309, 47);
+			this.txtDocumentoCli.Size = new System.Drawing.Size(424, 47);
 			this.txtDocumentoCli.TabIndex = 9;
 			// 
 			// label7
@@ -492,58 +492,20 @@
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Eliminar Cliente";
 			// 
-			// cbxOp
+			// btnDeleteCli
 			// 
-			this.cbxOp.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
-			this.cbxOp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxOp.Font = new System.Drawing.Font("Arial", 26.25F);
-			this.cbxOp.FormattingEnabled = true;
-			this.cbxOp.ImeMode = System.Windows.Forms.ImeMode.Off;
-			this.cbxOp.Location = new System.Drawing.Point(153, 39);
-			this.cbxOp.Name = "cbxOp";
-			this.cbxOp.Size = new System.Drawing.Size(220, 48);
-			this.cbxOp.TabIndex = 21;
-			// 
-			// gridElimCli
-			// 
-			this.gridElimCli.AllowUserToAddRows = false;
-			this.gridElimCli.AllowUserToDeleteRows = false;
-			this.gridElimCli.AllowUserToResizeColumns = false;
-			this.gridElimCli.AllowUserToResizeRows = false;
-			this.gridElimCli.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.gridElimCli.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.gridElimCli.BackgroundColor = System.Drawing.Color.Beige;
-			this.gridElimCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.gridElimCli.Location = new System.Drawing.Point(9, 276);
-			this.gridElimCli.Name = "gridElimCli";
-			this.gridElimCli.ReadOnly = true;
-			this.gridElimCli.Size = new System.Drawing.Size(1004, 330);
-			this.gridElimCli.TabIndex = 14;
-			this.gridElimCli.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridElimCli_CellClick);
-			this.gridElimCli.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridElimCli_CellContentClick);
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label13.Location = new System.Drawing.Point(85, 31);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(173, 57);
-			this.label13.TabIndex = 17;
-			this.label13.Text = "Número";
-			// 
-			// txtNumeroDel
-			// 
-			this.txtNumeroDel.Enabled = false;
-			this.txtNumeroDel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtNumeroDel.Location = new System.Drawing.Point(264, 41);
-			this.txtNumeroDel.Multiline = true;
-			this.txtNumeroDel.Name = "txtNumeroDel";
-			this.txtNumeroDel.Size = new System.Drawing.Size(192, 46);
-			this.txtNumeroDel.TabIndex = 16;
+			this.btnDeleteCli.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDeleteCli.Location = new System.Drawing.Point(548, 104);
+			this.btnDeleteCli.Name = "btnDeleteCli";
+			this.btnDeleteCli.Size = new System.Drawing.Size(166, 51);
+			this.btnDeleteCli.TabIndex = 27;
+			this.btnDeleteCli.Text = "Eliminar";
+			this.btnDeleteCli.UseVisualStyleBackColor = true;
+			this.btnDeleteCli.Click += new System.EventHandler(this.btnDeleteCli_Click);
 			// 
 			// txtNomDel
 			// 
+			this.txtNomDel.Enabled = false;
 			this.txtNomDel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNomDel.Location = new System.Drawing.Point(264, 187);
 			this.txtNomDel.Multiline = true;
@@ -553,6 +515,7 @@
 			// 
 			// txtDocDel
 			// 
+			this.txtDocDel.Enabled = false;
 			this.txtDocDel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDocDel.Location = new System.Drawing.Point(264, 114);
 			this.txtDocDel.Multiline = true;
@@ -580,16 +543,55 @@
 			this.label15.TabIndex = 23;
 			this.label15.Text = "Documento";
 			// 
-			// btnDeleteCli
+			// label13
 			// 
-			this.btnDeleteCli.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDeleteCli.Location = new System.Drawing.Point(548, 104);
-			this.btnDeleteCli.Name = "btnDeleteCli";
-			this.btnDeleteCli.Size = new System.Drawing.Size(166, 51);
-			this.btnDeleteCli.TabIndex = 27;
-			this.btnDeleteCli.Text = "Eliminar";
-			this.btnDeleteCli.UseVisualStyleBackColor = true;
-			this.btnDeleteCli.Click += new System.EventHandler(this.btnDeleteCli_Click);
+			this.label13.AutoSize = true;
+			this.label13.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label13.Location = new System.Drawing.Point(85, 31);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(173, 57);
+			this.label13.TabIndex = 17;
+			this.label13.Text = "Número";
+			// 
+			// txtNumeroDel
+			// 
+			this.txtNumeroDel.Enabled = false;
+			this.txtNumeroDel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtNumeroDel.Location = new System.Drawing.Point(264, 41);
+			this.txtNumeroDel.Multiline = true;
+			this.txtNumeroDel.Name = "txtNumeroDel";
+			this.txtNumeroDel.Size = new System.Drawing.Size(192, 46);
+			this.txtNumeroDel.TabIndex = 16;
+			// 
+			// gridElimCli
+			// 
+			this.gridElimCli.AllowUserToAddRows = false;
+			this.gridElimCli.AllowUserToDeleteRows = false;
+			this.gridElimCli.AllowUserToResizeColumns = false;
+			this.gridElimCli.AllowUserToResizeRows = false;
+			this.gridElimCli.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.gridElimCli.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.gridElimCli.BackgroundColor = System.Drawing.Color.Beige;
+			this.gridElimCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.gridElimCli.Location = new System.Drawing.Point(9, 276);
+			this.gridElimCli.Name = "gridElimCli";
+			this.gridElimCli.ReadOnly = true;
+			this.gridElimCli.Size = new System.Drawing.Size(1004, 330);
+			this.gridElimCli.TabIndex = 14;
+			this.gridElimCli.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridElimCli_CellClick);
+			this.gridElimCli.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridElimCli_CellContentClick);
+			// 
+			// cbxOp
+			// 
+			this.cbxOp.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+			this.cbxOp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxOp.Font = new System.Drawing.Font("Arial", 26.25F);
+			this.cbxOp.FormattingEnabled = true;
+			this.cbxOp.ImeMode = System.Windows.Forms.ImeMode.Off;
+			this.cbxOp.Location = new System.Drawing.Point(153, 39);
+			this.cbxOp.Name = "cbxOp";
+			this.cbxOp.Size = new System.Drawing.Size(220, 48);
+			this.cbxOp.TabIndex = 21;
 			// 
 			// Cliente
 			// 

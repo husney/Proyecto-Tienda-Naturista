@@ -321,12 +321,12 @@ namespace MDITiendaNatusista.Bussines
 		{
 			SqlConnection c = con.getConexion();
 
-			String sql = "DELETE FROM dbo.productos WHERE proCodigo = @codigo";
+			String sql = "DELETE FROM dbo.productos WHERE proCodigo = @cod";
 
 			try
 			{
 				SqlCommand comando = new SqlCommand(sql, c);
-				comando.Parameters.AddWithValue("@codigo", prod.Codigo);
+				comando.Parameters.AddWithValue("@cod", prod.Codigo);
 				comando.ExecuteNonQuery();
 				return true;
 			}catch(Exception ex)
@@ -522,12 +522,13 @@ namespace MDITiendaNatusista.Bussines
 		{
 			SqlConnection c = con.getConexion();
 
-			String sql = "DELETE FROM clientes WHERE cliNumero = @numero";
+			String sql = "DELETE FROM dbo.clientes WHERE cliDocumento = @doc";
 
 			try
 			{
 				SqlCommand comando = new SqlCommand(sql, c);
-				comando.Parameters.AddWithValue("@numero", cli.Numero);
+				comando.Parameters.AddWithValue("@doc", cli.Documento);
+				Console.WriteLine(cli.Documento);
 				comando.ExecuteNonQuery();
 				return true;
 			}catch(Exception ex)

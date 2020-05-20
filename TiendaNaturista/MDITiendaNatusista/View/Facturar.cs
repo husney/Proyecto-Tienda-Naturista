@@ -83,6 +83,7 @@ namespace MDITiendaNatusista.View
 		private void btnAgregarFac_Click(object sender, EventArgs e)
 		{
 			Entities.Producto p = (Entities.Producto)this.cbxFacProd.SelectedItem;
+			if(p.Cantidad > 0) { 
 			Entities.Cliente c = (Entities.Cliente) this.cbxCliFac.SelectedItem;
 			Entities.Vendedor ve = (Entities.Vendedor)this.cbxFacVen.SelectedItem;
 			int cant = Convert.ToInt32(this.numCan.Value);
@@ -113,7 +114,7 @@ namespace MDITiendaNatusista.View
 					}
 				}
 			}
-
+			}
 
 
 

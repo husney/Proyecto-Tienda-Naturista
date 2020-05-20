@@ -1,6 +1,6 @@
 USE [tienda_naturista]
 GO
-/****** Object:  Table [dbo].[clientes]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+/****** Object:  Table [dbo].[clientes]    Script Date: 20/05/2020 5:03:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[detalleFactura]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+/****** Object:  Table [dbo].[detalleFactura]    Script Date: 20/05/2020 5:03:33 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -37,23 +37,24 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[factura]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+/****** Object:  Table [dbo].[factura]    Script Date: 20/05/2020 5:03:33 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[factura](
 	[facNumero] [int] IDENTITY(1,1) NOT NULL,
+	[facValorTotal] [decimal](12, 2) NOT NULL,
+	[facRel] [int] NOT NULL,
 	[facFecha] [datetime] NULL,
-	[facValorTotal] [decimal](12, 2) NULL,
-	[facRel] [int] NULL,
+	[facDetall] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[facNumero] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[productos]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+/****** Object:  Table [dbo].[productos]    Script Date: 20/05/2020 5:03:33 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,7 +70,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[vendedores]    Script Date: 19/05/2020 6:27:32 p. m. ******/
+/****** Object:  Table [dbo].[vendedores]    Script Date: 20/05/2020 5:03:33 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,15 +84,6 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([cliDocumento])
-REFERENCES [dbo].[clientes] ([cliDocumento])
-GO
-ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([codigoProd])
-REFERENCES [dbo].[productos] ([proCodigo])
-GO
-ALTER TABLE [dbo].[detalleFactura]  WITH CHECK ADD FOREIGN KEY([usuarioVen])
-REFERENCES [dbo].[vendedores] ([venUsuario])
-GO
-ALTER TABLE [dbo].[factura]  WITH CHECK ADD FOREIGN KEY([facRel])
+ALTER TABLE [dbo].[factura]  WITH CHECK ADD FOREIGN KEY([facDetall])
 REFERENCES [dbo].[detalleFactura] ([facDetalle])
 GO

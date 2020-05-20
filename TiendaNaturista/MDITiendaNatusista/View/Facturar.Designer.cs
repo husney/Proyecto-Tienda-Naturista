@@ -171,12 +171,12 @@
 			// 
 			this.txtValProd.Enabled = false;
 			this.txtValProd.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtValProd.Location = new System.Drawing.Point(416, 396);
+			this.txtValProd.Location = new System.Drawing.Point(416, 406);
 			this.txtValProd.Margin = new System.Windows.Forms.Padding(6);
 			this.txtValProd.Multiline = true;
 			this.txtValProd.Name = "txtValProd";
 			this.txtValProd.ReadOnly = true;
-			this.txtValProd.Size = new System.Drawing.Size(269, 64);
+			this.txtValProd.Size = new System.Drawing.Size(269, 48);
 			this.txtValProd.TabIndex = 33;
 			this.txtValProd.TextChanged += new System.EventHandler(this.txtValProd_TextChanged);
 			// 

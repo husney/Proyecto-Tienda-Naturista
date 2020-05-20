@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MDITiendaNatusista.View
 {
-	public partial class Fac : Form
+	public partial class Factura : Form
 	{
-		public Fac()
+		public Factura()
 		{
 			InitializeComponent();
 		}

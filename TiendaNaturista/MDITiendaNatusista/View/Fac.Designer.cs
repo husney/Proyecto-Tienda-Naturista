@@ -1,6 +1,6 @@
 ﻿namespace MDITiendaNatusista.View
 {
-	partial class Fac
+	partial class Factura
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -171,7 +171,7 @@
 			this.gridFactura.Size = new System.Drawing.Size(574, 304);
 			this.gridFactura.TabIndex = 11;
 			// 
-			// Fac
+			// Factura
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 33F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,8 +190,9 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.lblIntro);
 			this.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
-			this.Name = "Fac";
+			this.Margin = new System.Windows.Forms.Padding(8);
+			this.Name = "Factura";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Fac";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Fac_FormClosed);
 			((System.ComponentModel.ISupportInitialize)(this.gridFactura)).EndInit();
