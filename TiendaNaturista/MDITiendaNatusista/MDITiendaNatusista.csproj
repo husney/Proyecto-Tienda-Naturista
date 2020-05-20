@@ -59,6 +59,12 @@
     <Compile Include="View\Cliente.Designer.cs">
       <DependentUpon>Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fac.Designer.cs">
+      <DependentUpon>Fac.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Facturar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="View\Cliente.resx">
       <DependentUpon>Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fac.resx">
+      <DependentUpon>Fac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Facturar.resx">
       <DependentUpon>Facturar.cs</DependentUpon>

@@ -11,24 +11,30 @@ namespace MDITiendaNatusista.Entities
 
 		private int numero;
 		private String fecha;
-		private int cliente;
+		private String proDescripcion;
+		private int cantidad;
 		private String vendedor;
+		private String cliente;
 		private double valorTotal;
 
 		public Factura() { }
 
-		public Factura(int numero, String fecha, int cliente, String vendedor, double valorTotal)
+		public Factura(int numero, String fecha, String descripcion, int cantidad, String vendedor, String cliente, double valorTotal)
 		{
 			this.numero = numero;
 			this.fecha = fecha;
-			this.cliente = cliente;
+			this.proDescripcion = descripcion;
+			this.cantidad = cantidad;
 			this.vendedor = vendedor;
+			this.cliente = cliente;
 			this.valorTotal = valorTotal;
 		}
 
 		public int Numero { get { return this.numero; } set { this.numero = value; } }
 		public String Fecha { get { return this.fecha; } set { this.fecha = value; } }
-		public int Cliente { get { return this.cliente; } set { this.cliente = value; } }
+		public String ProductoDescripcion { get { return this.proDescripcion; }  set { this.proDescripcion = value; } }
+		public int CantidadProducto { get { return this.cantidad; } set { this.cantidad = value; } }
+		public String Cliente { get { return this.cliente; } set { this.cliente = value; } }
 		public String Vendedor { get { return this.vendedor; } set { this.vendedor = value; } }
 		public double ValorTotal { get { return this.valorTotal; } set { this.valorTotal = value; } }
 

@@ -141,6 +141,7 @@ namespace MDITiendaNatusista.View
 					this.txtValTotal.Text = null;
 					this.txtValProd.Text = null;
 					this.numCan.Value = 0;
+					mostrarFactura();
 
 				}
 				else
@@ -156,6 +157,22 @@ namespace MDITiendaNatusista.View
 		private void label6_Click(object sender, EventArgs e)
 		{
 
+		}
+		private void mostrarFactura()
+		{
+			Entities.Factura fac = controller.mostrarFactura();
+
+			View.Fac f = new View.Fac();
+			f.facNumero.Text = fac.Numero.ToString();
+			f.facFecha.Text = fac.Fecha;
+			f.facCliente.Text = fac.Cliente;
+			f.facVendedor.Text = fac.Vendedor;
+			f.facTotal.Text = fac.ValorTotal.ToString();
+			f.gridFactura.DataSource = controller.productosFactura();
+			f.Show();
+
+
+			
 		}
 	}
 }

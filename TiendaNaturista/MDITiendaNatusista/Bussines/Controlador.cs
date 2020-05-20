@@ -733,14 +733,14 @@ namespace MDITiendaNatusista.Bussines
 		{
 			SqlConnection c = con.getConexion();
 
-			String sql = "INSERT INTO factura (facFecha,facValorTotal, facRel) VALUES (GETDATE(), @valor, @rel)";
+			String sql = "INSERT INTO factura(facValorTotal, facRel, facFecha) VALUES(@total, @relac, "+"GETDATE()"+") ";
 			
 			try
 			{
 				SqlCommand comando = new SqlCommand(sql, c);
 				Console.WriteLine(rel);
-				comando.Parameters.AddWithValue("@valor", total);
-				comando.Parameters.AddWithValue("@rel", rel);
+				comando.Parameters.AddWithValue("@total", total);
+				comando.Parameters.AddWithValue("@relac", rel);
 				comando.ExecuteNonQuery();
 				cambioEstado();
 				rel = rel + 1;
@@ -778,6 +778,70 @@ namespace MDITiendaNatusista.Bussines
 			}catch(Exception ex)
 			{
 				
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
+
+		public Entities.Factura mostrarFactura()
+		{
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT factura.facNumero, factura.facFecha, productos.proDescripcion, detalleFactura.cantidadProd, detalleFactura.usuarioVen, detalleFactura.cliDocumento, factura.facValorTotal " +
+				"FROM factura INNER JOIN detalleFactura ON factura.facRel = detalleFactura.facRel INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd WHERE factura.facNumero = (SELECT MAX(facNumero) FROM factura)";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataReader lector = comando.ExecuteReader();
+
+				if (lector.Read())
+				{
+					int num = Convert.ToInt32(lector.GetValue(0));
+					String fecha = lector.GetValue(1).ToString();
+					String desc = lector.GetValue(2).ToString();
+					int can = Convert.ToInt32(lector.GetValue(3));
+					String user = lector.GetValue(4).ToString();
+					String cli = lector.GetValue(5).ToString();
+					double total = Convert.ToDouble(lector.GetValue(6));
+
+					return new Entities.Factura(num, fecha, desc, can, user, cli, total);
+				}
+				else
+				{
+					return null;
+				}
+			}catch (Exception ex)
+			{
+				return null;
+			}
+			finally
+			{
+				c.Close();
+			}
+		}
+
+		public DataTable productosFactura()
+		{
+			DataTable prod = new DataTable();
+			SqlConnection c = con.getConexion();
+
+			String sql = "SELECT  productos.proDescripcion AS Producto, sum(detalleFactura.cantidadProd) AS Cantidad FROM detalleFactura INNER JOIN productos ON productos.proCodigo = detalleFactura.codigoProd  " +
+				"INNER JOIN factura ON factura.facRel = detalleFactura.facRel WHERE factura.facNumero = (SELECT MAX(facNumero) FROM factura)  GROUP BY productos.proDescripcion";
+
+			try
+			{
+				SqlCommand comando = new SqlCommand(sql, c);
+				SqlDataAdapter adaptador = new SqlDataAdapter();
+				adaptador.SelectCommand = comando;
+				adaptador.Fill(prod);
+				return prod;
+
+			}catch (Exception ex)
+			{
+				return null;
 			}
 			finally
 			{
